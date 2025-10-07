@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>synapse_interfaces</name>
+  <version>0.1.0</version>
+  <description>
+    Custom ROS 2 interface definitions (messages, services, actions) for Project Synapse:
+    person detection/identification, emotion state, and memory APIs.
+  </description>
+
+  <maintainer email="maintainer@example.com">Project Synapse Maintainer</maintainer>
+  <license>Apache-2.0</license>
+  <url type="website">https://example.com/project-synapse</url>
+  <url type="repository">https://example.com/project-synapse/repo.git</url>
+  <author email="engineering@example.com">Synapse Engineering Team</author>
+
+  <!-- Build system -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- ROSIDL generation and interface dependencies -->
+  <build_depend>rosidl_default_generators</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>builtin_interfaces</build_depend>
+
+  <exec_depend>rosidl_default_runtime</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>builtin_interfaces</exec_depend>
+
+  <!-- Group membership for ROS interface packages -->
+  <member_of_group>rosidl_interface_packages</member_of_group>
+
+  <!-- Optional testing/linting (kept minimal; enable later as needed)
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  -->
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

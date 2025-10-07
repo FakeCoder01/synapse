@@ -1,0 +1,46 @@
+# synapse_interfaces/AddConversationMemory.srv
+# Adds a conversational memory entry to the Cognitive Core's vector database.
+# Intended for storing semantically searchable memories tied to a person and conversation.
+#
+# Typical usage:
+# - Input text and its embedding are saved with metadata (person_id, role, timestamp, tags).
+# - If conversation_id is empty, the server may create a new conversation and return its id.
+# - Embedding should be a fixed-length vector produced by the configured encoder
+#   (e.g., sentence-transformers). The server persists this vector for similarity search.
+#
+# Fields:
+# - person_id: Persistent identifier for a known person. Can be empty if unknown/ambient.
+# - role: Speaker role, e.g., "user" or "robot" (free-form but recommended values).
+# - text: Raw utterance text to store (pre/post-processed text as per pipeline policy).
+# - embedding: Float vector embedding for semantic search.
+# - timestamp: When the utterance occurred (robot time).
+# - tags: Free-form labels, e.g., ["greeting", "kitchen", "pet"].
+# - conversation_id: Optional group/session id for linking a sequence of messages.
+# - channel: Optional capture medium, e.g., "voice", "text", "app".
+#
+# Response:
+# - success: True if saved successfully.
+# - memory_id: Persistent id for the stored memory (e.g., UUID).
+# - conversation_id: The conversation id used (either provided or newly created).
+# - message: Human-readable status or error message.
+#
+# Notes:
+# - Storage backends can be local (e.g., ChromaDB) or remote (e.g., Pinecone) behind this service.
+# - Implementations should enforce a consistent embedding dimension and report errors otherwise.
+# - The DB path and backend configuration are handled by the memory server node parameters.
+
+# Request
+string person_id
+string role
+string text
+float32[] embedding
+builtin_interfaces/Time timestamp
+string[] tags
+string conversation_id
+string channel
+---
+# Response
+bool success
+string memory_id
+string conversation_id
+string message

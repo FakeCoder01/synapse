@@ -1,0 +1,23 @@
+# synapse_interfaces/AddPerson.srv
+# Adds a new person to the cognitive memory (relational DB) with an associated face encoding.
+# The service returns a persistent person_id (e.g., UUID) for later reference.
+#
+# Fields:
+# - name: Human-friendly display name for the person (e.g., "John", "Mom").
+# - face_encoding: A face embedding vector (e.g., 128-dim from dlib/face_recognition).
+# - first_seen: Timestamp of when the person was first seen/registered.
+# - notes: Free-form notes (e.g., "met at kitchen on 2025-01-01", "wears glasses").
+#
+# Response:
+# - success: True if the person was inserted successfully.
+# - person_id: Persistent identifier for this person (string/UUID).
+# - message: Human-readable status or error message.
+
+string name
+float32[] face_encoding
+builtin_interfaces/Time first_seen
+string notes
+---
+bool success
+string person_id
+string message

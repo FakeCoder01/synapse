@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>synapse_emotion</name>
+  <version>0.1.0</version>
+  <description>
+    Emotion Engine for Project Synapse.
+    Provides a finite-state machine and affective model (mood, valence/arousal)
+    that responds to internal/external events and publishes the global
+    emotion state (e.g., on /emotion/state using synapse_interfaces/EmotionState).
+  </description>
+
+  <maintainer email="maintainer@example.com">Project Synapse Maintainer</maintainer>
+  <author email="engineering@example.com">Synapse Engineering Team</author>
+  <license>Apache-2.0</license>
+
+  <url type="website">https://example.com/project-synapse</url>
+  <url type="repository">https://example.com/project-synapse/repo.git</url>
+
+  <!-- Build system for Python-based ROS 2 packages -->
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <!-- Runtime dependencies -->
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>synapse_interfaces</exec_depend>
+
+  <!-- Optional: lifecycle/diagnostics if used by the engine
+  <exec_depend>lifecycle_msgs</exec_depend>
+  <exec_depend>diagnostic_updater</exec_depend>
+  -->
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

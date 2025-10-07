@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>synapse_bringup</name>
+  <version>0.1.0</version>
+  <description>
+    Launch files and system bring-up for Project Synapse.
+    Provides unified launch compositions for sensors, base control, perception,
+    SLAM, navigation, interaction, and behaviors.
+  </description>
+
+  <maintainer email="maintainer@example.com">Project Synapse Maintainer</maintainer>
+  <author email="engineering@example.com">Synapse Engineering Team</author>
+  <license>Apache-2.0</license>
+
+  <url type="website">https://example.com/project-synapse</url>
+  <url type="repository">https://example.com/project-synapse/repo.git</url>
+
+  <!-- Build system (used to install launch/ and any config files) -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- Launch system runtime -->
+  <exec_depend>ros2launch</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+
+  <!-- Internal Synapse packages (bringup orchestrates these) -->
+  <exec_depend>synapse_interfaces</exec_depend>
+  <exec_depend>synapse_base</exec_depend>
+  <exec_depend>synapse_perception</exec_depend>
+  <exec_depend>synapse_memory</exec_depend>
+  <exec_depend>synapse_interaction</exec_depend>
+  <exec_depend>synapse_emotion</exec_depend>
+  <exec_depend>synapse_display</exec_depend>
+  <exec_depend>synapse_behaviors</exec_depend>
+  <exec_depend>synapse_navigation</exec_depend>
+  <exec_depend>synapse_teleop</exec_depend>
+
+  <!-- Navigation/SLAM stacks commonly launched by bringup -->
+  <exec_depend>slam_toolbox</exec_depend>
+  <exec_depend>nav2_bringup</exec_depend>
+  <exec_depend>nav2_msgs</exec_depend>
+
+  <!-- Common sensor drivers frequently used in bringup (optional depending on hardware) -->
+  <exec_depend>rplidar_ros</exec_depend>
+  <exec_depend>urg_node</exec_depend>
+  <exec_depend>realsense2_camera</exec_depend>
+  <exec_depend>realsense2_description</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

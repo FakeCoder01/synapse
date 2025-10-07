@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>synapse_base</name>
+  <version>0.1.0</version>
+  <description>
+    Base control and motor interface for Project Synapse.
+    Subscribes to /cmd_vel (geometry_msgs/Twist) and drives the robot's motors.
+    Optionally publishes odometry (/odom) and TF (odom -&gt; base_link) using wheel encoders and/or IMU data.
+  </description>
+
+  <maintainer email="maintainer@example.com">Project Synapse Maintainer</maintainer>
+  <author email="engineering@example.com">Synapse Engineering Team</author>
+  <license>Apache-2.0</license>
+
+  <url type="website">https://example.com/project-synapse</url>
+  <url type="repository">https://example.com/project-synapse/repo.git</url>
+
+  <!-- Build system for Python-based ROS 2 packages -->
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <!-- Runtime dependencies -->
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>tf2_geometry_msgs</exec_depend>
+
+  <!-- Optional: diagnostics and parameters -->
+  <exec_depend>diagnostic_updater</exec_depend>
+
+  <!-- Optional: motor controller backends (e.g., serial, I2C, CAN) -->
+  <!-- pyserial provides Python serial support across platforms -->
+  <exec_depend>pyserial</exec_depend>
+
+  <!-- Test and lint dependencies (enable when tests are added)
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  <test_depend>python3-pytest</test_depend>
+  -->
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

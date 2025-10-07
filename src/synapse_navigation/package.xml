@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>synapse_navigation</name>
+  <version>0.1.0</version>
+  <description>
+    Navigation stack integration for Project Synapse.
+    Provides launch files and configurations for SLAM (slam_toolbox) and Nav2,
+    including map bringup, localization, planning, and control.
+  </description>
+
+  <maintainer email="maintainer@example.com">Project Synapse Maintainer</maintainer>
+  <author email="engineering@example.com">Synapse Engineering Team</author>
+  <license>Apache-2.0</license>
+
+  <url type="website">https://example.com/project-synapse</url>
+  <url type="repository">https://example.com/project-synapse/repo.git</url>
+
+  <!-- Build system for installing launch/ and config/ assets -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- Launch system runtime -->
+  <exec_depend>ros2launch</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+
+  <!-- Core ROS message types used by Nav2 and navigation utilities -->
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>lifecycle_msgs</exec_depend>
+
+  <!-- Navigation and SLAM stacks -->
+  <exec_depend>nav2_bringup</exec_depend>
+  <exec_depend>nav2_msgs</exec_depend>
+  <exec_depend>slam_toolbox</exec_depend>
+
+  <!-- Optional: map server and localization components (often pulled by nav2_bringup) -->
+  <exec_depend>nav2_map_server</exec_depend>
+  <exec_depend>nav2_amcl</exec_depend>
+  <exec_depend>nav2_util</exec_depend>
+
+  <!-- Internal interfaces (waypoints/behavior integration may consume these) -->
+  <exec_depend>synapse_interfaces</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
