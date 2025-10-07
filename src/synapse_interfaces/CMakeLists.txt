@@ -26,6 +26,7 @@ set(srv_files
   "srv/GetPersonByFace.srv"
   "srv/AddConversationMemory.srv"
   "srv/RetrieveRelevantMemories.srv"
+  "srv/CaptureFaceEncoding.srv"
 )
 
 # Generate interfaces

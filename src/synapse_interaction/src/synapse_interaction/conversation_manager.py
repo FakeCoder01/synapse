@@ -83,6 +83,8 @@ from synapse_interfaces.msg import DetectedPersons, EmotionState
 from synapse_interfaces.srv import (
     RetrieveRelevantMemories,
     AddConversationMemory,
+    AddPerson,
+    CaptureFaceEncoding,
 )
 
 # Optional dependencies (import guarded)
@@ -542,6 +544,54 @@ class ConversationManager(Node):
         )
         self.declare_parameter("memory.add_service", "/memory/add_conversation_memory")
 
+        # Enrollment (capture + add person) configuration
+        self.declare_parameter(
+            "enrollment.capture_service", "/perception/capture_face_encoding"
+        )
+        self.declare_parameter("enrollment.addperson_service", "/memory/add_person")
+        self.declare_parameter("enrollment.image_topic", "/camera/color/image_raw")
+        self.declare_parameter("enrollment.detection_model", "hog")
+        self.declare_parameter("enrollment.encoding_model", "small")
+        self.declare_parameter("enrollment.upsample_times", 1)
+        self.declare_parameter("enrollment.min_face_size_px", 40.0)
+        self.declare_parameter("enrollment.capture_timeout_sec", 6.0)
+
+        # Bind enrollment params to instance variables
+        self.capture_srv_name = (
+            self.get_parameter("enrollment.capture_service")
+            .get_parameter_value()
+            .string_value
+        )
+        self.addperson_srv_name = (
+            self.get_parameter("enrollment.addperson_service")
+            .get_parameter_value()
+            .string_value
+        )
+        self.enroll_image_topic = (
+            self.get_parameter("enrollment.image_topic")
+            .get_parameter_value()
+            .string_value
+        )
+        self.enroll_detection_model = (
+            self.get_parameter("enrollment.detection_model")
+            .get_parameter_value()
+            .string_value
+        )
+        self.enroll_encoding_model = (
+            self.get_parameter("enrollment.encoding_model")
+            .get_parameter_value()
+            .string_value
+        )
+        self.enroll_upsample_times = int(
+            self.get_parameter("enrollment.upsample_times").value
+        )
+        self.enroll_min_face_size_px = float(
+            self.get_parameter("enrollment.min_face_size_px").value
+        )
+        self.enroll_capture_timeout_sec = float(
+            self.get_parameter("enrollment.capture_timeout_sec").value
+        )
+
         self.declare_parameter("topics.detected_persons", "/detected_persons")
         self.declare_parameter("topics.emotion_state", "/emotion/state")
         self.declare_parameter("topics.transcript_pub", "/conversation/transcript")
@@ -663,6 +713,11 @@ class ConversationManager(Node):
         self.cli_addmem = self.create_client(
             AddConversationMemory, self.addmem_srv_name
         )
+        # Enrollment service clients
+        self.cli_capture = self.create_client(
+            CaptureFaceEncoding, self.capture_srv_name
+        )
+        self.cli_addperson = self.create_client(AddPerson, self.addperson_srv_name)
 
         # Embedding model optional (to pre-embed texts before storing)
         self._embedder = None
@@ -838,6 +893,12 @@ class ConversationManager(Node):
                 self._publish_transcript(user_text)
                 self._store_memory(person_id, "user", user_text, conversation_id)
 
+                # Optional: handle enrollment intent before normal retrieval/LLM
+                if self._maybe_handle_enrollment(user_text):
+                    # Enrollment handled (asked name, captured, added). Continue loop.
+                    turns += 1
+                    continue
+
                 # Retrieve relevant memories
                 memories = self._retrieve_memories(
                     person_id, user_text, top_k=self.top_k_memories
@@ -905,6 +966,134 @@ class ConversationManager(Node):
         msg = String()
         msg.data = text
         self.pub_response.publish(msg)
+
+    # -------------------------
+    # Enrollment helpers
+    # -------------------------
+
+    def _maybe_handle_enrollment(self, user_text: str) -> bool:
+        """
+        Parse simple intents like 'enroll me', 'register my face', or 'my name is <name>'.
+        If triggered, run a capture + AddPerson flow and speak a confirmation.
+        Returns True if an enrollment action was performed.
+        """
+        if not user_text:
+            return False
+        text = user_text.strip().lower()
+
+        # Basic triggers
+        triggers = ("enroll", "register my face", "add me", "sign me up")
+        name_phrases = ("my name is ", "call me ", "i am ")
+
+        trigger_hit = any(t in text for t in triggers) or any(
+            p in text for p in name_phrases
+        )
+        if not trigger_hit:
+            return False
+
+        # Extract name if present
+        name = self._extract_name_from_text(text)
+        if not name:
+            # Ask for name
+            self._say("Sure, I can enroll you. What should I call you?")
+            candidate = self._listen(10.0) or ""
+            name = (
+                self._extract_name_from_text((candidate or "").lower()).strip()
+                or (candidate or "").strip()
+            )
+
+        name = (name or "").strip()
+        if not name:
+            self._say("I didn't catch that name. We can try enrollment later.")
+            return True
+
+        # Capture a face encoding
+        enc = self._capture_face_encoding()
+        if enc is None:
+            self._say(
+                "I couldn't get a clear view of your face. Let's try again later."
+            )
+            return True
+
+        # Send AddPerson
+        added = self._add_person(name=name, encoding=enc)
+        if added:
+            self._say(f"Nice to meet you, {name}. You're all set!")
+            # Log memory
+            try:
+                self._store_memory(
+                    "", "system", f"Enrolled new person '{name}' via UI flow.", ""
+                )
+            except Exception:
+                pass
+        else:
+            self._say(
+                "Something went wrong saving your profile. We can try again later."
+            )
+        return True
+
+    def _extract_name_from_text(self, text: str) -> str:
+        """
+        Naive name extraction from phrases like 'my name is <name>' or 'call me <name>'.
+        Returns empty string if no obvious name is found.
+        """
+        probes = ("my name is ", "call me ", "i am ")
+        for p in probes:
+            if p in text:
+                frag = text.split(p, 1)[1].strip()
+                # Stop at sentence boundary if present
+                for stop in (".", ",", "!", "?"):
+                    if stop in frag:
+                        frag = frag.split(stop, 1)[0].strip()
+                # Title-case as a simple cleanup
+                return frag.title()
+        return ""
+
+    def _capture_face_encoding(self) -> Optional[List[float]]:
+        """
+        Call the CaptureFaceEncoding service to get a single face embedding.
+        """
+        if not self.cli_capture.wait_for_service(timeout_sec=1.0):
+            self.get_logger().warn("CaptureFaceEncoding service not available.")
+            return None
+        req = CaptureFaceEncoding.Request()
+        req.image_topic = self.enroll_image_topic
+        req.timeout_sec = float(self.enroll_capture_timeout_sec)
+        req.prefer_largest_face = True
+        req.target_index = -1
+        req.detection_model = self.enroll_detection_model
+        req.upsample_times = int(self.enroll_upsample_times)
+        req.encoding_model = self.enroll_encoding_model
+        req.min_face_size_px = float(self.enroll_min_face_size_px)
+        fut = self.cli_capture.call_async(req)
+        rclpy.spin_until_future_complete(
+            self, fut, timeout_sec=self.enroll_capture_timeout_sec + 1.5
+        )
+        if not fut.done():
+            return None
+        resp = fut.result()
+        if not (resp and resp.success and resp.face_encoding):
+            return None
+        return list(resp.face_encoding)
+
+    def _add_person(self, name: str, encoding: List[float]) -> bool:
+        """
+        Call AddPerson service to persist a new person profile with a given encoding.
+        """
+        if not self.cli_addperson.wait_for_service(timeout_sec=1.0):
+            self.get_logger().warn("AddPerson service not available.")
+            return False
+        req = AddPerson.Request()
+        req.name = name
+        req.face_encoding = [float(x) for x in (encoding or [])]
+        req.first_seen = self.get_clock().now().to_msg()
+        req.notes = "Enrolled via Conversation Manager UI."
+        fut = self.cli_addperson.call_async(req)
+        rclpy.spin_until_future_complete(self, fut, timeout_sec=3.0)
+        if not fut.done():
+            return False
+        resp = fut.result()
+        return bool(resp and resp.success)
 
     # -------------------------
     # Memory integration

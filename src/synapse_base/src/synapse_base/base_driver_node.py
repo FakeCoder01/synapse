@@ -174,6 +174,116 @@ class MotorDriver:
         return None
 
 
+class RoboclawDriver:
+    """
+    Roboclaw motor driver (Packet Serial mode) minimal backend.
+
+    This implementation sends M1/M2 Duty commands (0x32, 0x33) with signed 16-bit values
+    scaled from desired RPMs by max_rpm. It computes CRC-16-CCITT per Roboclaw spec.
+
+    Notes:
+      - Ensure your Roboclaw is set to Packet Serial mode and the baud/address match.
+      - This backend does not read diagnostics or encoders (write-only for RPM→duty).
+      - If you have encoders, consider implementing speed/position commands and QPPS.
+    """
+
+    def __init__(
+        self,
+        node: Node,
+        port: str,
+        baud: int,
+        address: int = 0x80,
+        max_rpm: float = 3000.0,
+        invert_left: bool = False,
+        invert_right: bool = False,
+        debug: bool = False,
+    ):
+        self._node = node
+        self._port = port
+        self._baud = baud
+        self._addr = address & 0xFF
+        self._max_rpm = max(1.0, float(max_rpm))
+        self._invert_left = -1.0 if invert_left else 1.0
+        self._invert_right = -1.0 if invert_right else 1.0
+        self._debug = debug
+        self._ser = None
+        try:
+            import serial  # type: ignore
+
+            self._ser = serial.Serial(
+                port=self._port, baudrate=self._baud, timeout=0.02
+            )
+            self._node.get_logger().info(
+                f"RoboclawDriver: Opened serial {self._port} @ {self._baud} baud (addr=0x{self._addr:02X})"
+            )
+        except Exception as exc:
+            self._node.get_logger().warn(
+                f"RoboclawDriver: Serial unavailable, running MOCK: {exc}"
+            )
+            self._ser = None
+
+    def set_wheel_rpm(self, left_rpm: float, right_rpm: float) -> None:
+        l = float(left_rpm) * self._invert_left
+        r = float(right_rpm) * self._invert_right
+        # Map RPM -> duty in [-32767, 32767]
+        l_duty = self._rpm_to_duty(l)
+        r_duty = self._rpm_to_duty(r)
+        self._m1_duty(l_duty)
+        self._m2_duty(r_duty)
+
+    def stop(self) -> None:
+        self._m1_duty(0)
+        self._m2_duty(0)
+
+    # ----- Packet helpers -----
+
+    def _rpm_to_duty(self, rpm: float) -> int:
+        ratio = max(-1.0, min(1.0, rpm / self._max_rpm))
+        return int(ratio * 32767.0)
+
+    def _m1_duty(self, duty: int) -> None:
+        self._send_packet(0x32, self._pack_s16(duty))
+
+    def _m2_duty(self, duty: int) -> None:
+        self._send_packet(0x33, self._pack_s16(duty))
+
+    def _pack_s16(self, val: int) -> bytes:
+        # Clamp to signed 16-bit and pack big-endian
+        v = max(-32767, min(32767, int(val)))
+        if v < 0:
+            v = (1 << 16) + v
+        return bytes([(v >> 8) & 0xFF, v & 0xFF])
+
+    def _send_packet(self, cmd: int, data: bytes) -> None:
+        pkt = bytes([self._addr, cmd & 0xFF]) + data
+        crc = self._crc16(pkt)
+        frame = pkt + bytes([(crc >> 8) & 0xFF, crc & 0xFF])
+        if self._ser:
+            try:
+                self._ser.write(frame)
+            except Exception as exc:
+                self._node.get_logger().error(f"Roboclaw TX failed: {exc}")
+        if self._debug or not self._ser:
+            self._node.get_logger().debug(
+                f"[Roboclaw TX] cmd=0x{cmd:02X} data={data.hex()} crc=0x{crc:04X}"
+            )
+
+    @staticmethod
+    def _crc16(buf: bytes) -> int:
+        """
+        CRC-16-CCITT (poly=0x1021, init=0) per Roboclaw docs.
+        """
+        crc = 0
+        for b in buf:
+            crc ^= b << 8
+            for _ in range(8):
+                if crc & 0x8000:
+                    crc = ((crc << 1) ^ 0x1021) & 0xFFFF
+                else:
+                    crc = (crc << 1) & 0xFFFF
+        return crc
+
+
 class BaseDriverNode(Node):
     def __init__(self):
         super().__init__("base_driver_node")
@@ -188,6 +298,13 @@ class BaseDriverNode(Node):
         self.declare_parameter("invert_left_wheel", False)
         self.declare_parameter("invert_right_wheel", False)
         self.declare_parameter("debug_driver", False)
+        # Motor backend selection and Roboclaw-specific params
+        self.declare_parameter(
+            "driver_type", "serial_ascii"
+        )  # "serial_ascii" | "roboclaw"
+        self.declare_parameter("roboclaw_address", 128)  # 0x80 default
+        self.declare_parameter("roboclaw_baud", 38400)
+        self.declare_parameter("max_wheel_rpm", 3000.0)
 
         self.declare_parameter("wheel_radius", 0.033)
         self.declare_parameter("wheel_separation", 0.16)
@@ -218,6 +335,14 @@ class BaseDriverNode(Node):
         self.invert_left_wheel = bool(self.get_parameter("invert_left_wheel").value)
         self.invert_right_wheel = bool(self.get_parameter("invert_right_wheel").value)
         self.debug_driver = bool(self.get_parameter("debug_driver").value)
+
+        # Backend selection and Roboclaw params
+        self.driver_type = (
+            self.get_parameter("driver_type").get_parameter_value().string_value
+        )
+        self.roboclaw_address = int(self.get_parameter("roboclaw_address").value)
+        self.roboclaw_baud = int(self.get_parameter("roboclaw_baud").value)
+        self.max_wheel_rpm = float(self.get_parameter("max_wheel_rpm").value)
 
         self.wheel_radius = float(self.get_parameter("wheel_radius").value)
         self.wheel_separation = float(self.get_parameter("wheel_separation").value)
@@ -252,14 +377,26 @@ class BaseDriverNode(Node):
             self.wheel_separation = max(1e-6, self.wheel_separation)
 
         # Motor driver
-        self.driver = MotorDriver(
-            node=self,
-            port=self.serial_port,
-            baud=self.serial_baud,
-            invert_left=self.invert_left_wheel,
-            invert_right=self.invert_right_wheel,
-            debug=self.debug_driver,
-        )
+        if self.driver_type.lower() == "roboclaw":
+            self.driver = RoboclawDriver(
+                node=self,
+                port=self.serial_port,
+                baud=self.roboclaw_baud or self.serial_baud,
+                address=self.roboclaw_address,
+                max_rpm=self.max_wheel_rpm,
+                invert_left=self.invert_left_wheel,
+                invert_right=self.invert_right_wheel,
+                debug=self.debug_driver,
+            )
+        else:
+            self.driver = MotorDriver(
+                node=self,
+                port=self.serial_port,
+                baud=self.serial_baud,
+                invert_left=self.invert_left_wheel,
+                invert_right=self.invert_right_wheel,
+                debug=self.debug_driver,
+            )
 
         # State
         self._last_cmd_time = 0.0

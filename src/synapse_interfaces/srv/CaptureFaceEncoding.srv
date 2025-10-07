@@ -1,0 +1,60 @@
+# synapse_interfaces/CaptureFaceEncoding.srv
+# Requests a one-shot face capture from a camera image topic and returns a single
+# 128-d (or appropriate) face encoding vector for enrollment or identification.
+#
+# Typical usage:
+# - The capture node subscribes to `image_topic`, waits up to `timeout_sec` for frames,
+#   detects faces using the requested detection model and upsample settings, and selects
+#   a face according to `target_index` or `prefer_largest_face`.
+# - It then computes the face encoding using `encoding_model` (e.g., "small" or "large"),
+#   and returns the float32 vector along with the chosen face bounding box and counts.
+#
+# Notes:
+# - This service is designed to support UI-driven person enrollment flows initiated
+#   by the Conversation Manager (or any interactive node).
+# - It avoids external message types (e.g., sensor_msgs/Image) to minimize dependencies
+#   in the interface package. If you need a debug snapshot, consider a separate topic
+#   published by the capture node.
+#
+# REQUEST FIELDS
+# - image_topic:           Camera RGB image topic to capture from (e.g., "/camera/color/image_raw")
+# - timeout_sec:           Maximum seconds to wait for a valid frame and detection (e.g., 5.0)
+# - prefer_largest_face:   If true and target_index < 0, select largest face by area
+# - target_index:          Face index to select when multiple faces are present; -1 to auto-select
+# - detection_model:       Face detection backend (e.g., "hog" or "cnn")
+# - upsample_times:        Number of times to upsample image before detection (e.g., 1)
+# - encoding_model:        Face encoding model id (e.g., "small" or "large")
+# - min_face_size_px:      Minimum face bounding-box min(width,height) in pixels to accept (e.g., 40.0)
+#
+# RESPONSE FIELDS
+# - success:               True if a face encoding was produced
+# - face_encoding:         Floating-point vector (e.g., 128-d for dlib/face_recognition)
+# - chosen_index:          Index of the selected face among detections; -1 if none
+# - num_faces:             Number of faces detected in the final processed frame
+# - bbox_*:                Bounding box of the chosen face (0 if none). Coordinates in pixel space.
+# - message:               Human-readable message or error description
+#
+# Example flow:
+#   1) UI/Conversation Manager calls CaptureFaceEncoding with desired parameters.
+#   2) On success, it immediately calls AddPerson.srv with `face_encoding` and the entered name.
+#
+# REQUEST
+string image_topic
+float32 timeout_sec
+bool prefer_largest_face
+int32 target_index
+string detection_model
+int32 upsample_times
+string encoding_model
+float32 min_face_size_px
+---
+# RESPONSE
+bool success
+float32[] face_encoding
+int32 chosen_index
+int32 num_faces
+uint32 bbox_x
+uint32 bbox_y
+uint32 bbox_width
+uint32 bbox_height
+string message

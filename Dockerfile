@@ -1,0 +1,27 @@
+# Start from a base ROS 2 image (e.g., Humble, Iron, depending on your project)
+# You can find official images on Docker Hub: https://hub.docker.com/_/ros
+FROM osrf/ros:humble-desktop
+
+# Set the working directory inside the container
+WORKDIR /ros_ws
+
+# Install any necessary dependencies that aren't in the base image
+# Example:
+# RUN apt-get update && apt-get install -y \
+#     python3-pip \
+#     && rm -rf /var/lib/apt/lists/*
+
+# Copy your local ROS 2 project source code into the container's workspace
+# The 'src' folder contains your packages
+COPY src /ros_ws/src
+
+# Build the ROS 2 workspace
+RUN . /opt/ros/humble/setup.bash && \
+    rosdep update && \
+    rosdep install --from-paths src --ignore-src -y && \
+    colcon build
+
+# Optional: Set the entrypoint to a script or the ROS 2 setup file
+# This is a common pattern to automatically source the workspace
+ENTRYPOINT ["/bin/bash", "-c", "source /opt/ros/humble/setup.bash && source install/setup.bash && exec \"$@\""]
+CMD ["/bin/bash"]
