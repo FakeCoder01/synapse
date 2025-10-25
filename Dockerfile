@@ -8,9 +8,9 @@ WORKDIR /ros_ws
 # Install any necessary dependencies that aren't in the base image
 # Example:
 RUN apt-get update && apt-get install -y \
-    ros-humble-navigation2 ros-humble-nav2-bringup ros-humble-slam-toolbox \
+    ros-humble-navigation2 ros-humble-ros-core ros-humble-nav2-bringup ros-humble-slam-toolbox \
     ros-humble-teleop-twist-keyboard ros-humble-xacro ros-humble-rqt* \
-    python3-colcon-common-extensions python3-rosdep python3-vcstool git
+    python3-colcon-common-extensions python3-rosdep python3-vcstool git ros-humble-rosidl-default-generators
 
 
 RUN rosdep init || true
