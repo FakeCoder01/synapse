@@ -1,0 +1,5 @@
+# Request a person's identity based on a (stubbed) encoding
+float32[] face_encoding
+---
+# Return the person's data
+ai_robot_msgs/Person person_data

@@ -1,0 +1,6 @@
+# Store a new line in the conversation history
+string person_id
+string speaker    # 'robot' or 'person'
+string line
+---
+bool success

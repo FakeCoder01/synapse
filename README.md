@@ -1,429 +1,157 @@
-# Project Synapse — An Autonomous AI Robot Companion
+# Synapse : AI Pet Robot Simulation
 
-Project Synapse is a modular, ROS 2–based, socially intelligent mobile robot that navigates a home, recognizes people, remembers conversations, exhibits emotions, and proactively engages with inhabitants. It is inspired by Anki Vector but designed to be far more capable, extensible, and open.
+This project is a complete ROS 2 Humble simulation of an intelligent, interactive mobile robot. It includes a full navigation stack (SLAM, Nav2) and an AI "brain" for face recognition, long-term memory, and autonomous interaction.
 
-This repository contains a ROS 2 workspace scaffold and documentation to build, run, and extend the system.
+## Features
 
-- Modularity: Perception, navigation, cognition, interaction, display, and behaviors are isolated packages.
-- Scalability: Add sensors, nodes, and behaviors without breaking core systems.
-- Data-Centric: Long-term semantic memory and person profiles power personalization.
+- **Simulation**: A 4-wheel differential drive robot with a 3D depth camera in a Gazebo world with various obstacles.
+- **Navigation**:
+  - **SLAM**: Uses `slam_toolbox` for creating a map of the environment.
+  - **Localization**: Uses `amcl` for localizing the robot in a pre-existing map.
+  - **Path Planning**: Uses `Nav2` for planning and following a path to a goal.
+- **AI Brain**:
+  - **Face Recognition**: Detects faces in the camera feed and uses a stubbed recognition system to identify them. New faces are registered in a database.
+  - **Long-Term Memory**: A SQLite database stores information about known people and past conversations.
+  - **Autonomous Interaction**: The robot can autonomously greet new and known people, referencing its memory of past interactions.
+  - **Person Following**: The robot can be commanded to follow a specific person by publishing the person's ID to the `/follow_person_start` topic.
+- **UI**: A custom RQT plugin serves as the robot's "face", showing the live camera feed with annotations and the robot's current "emotion" (🙂 for happy, 🤔 for curious, 😐 for neutral).
 
-Status: Initial workspace scaffolding, launch and package structure. Subsequent commits will add complete node implementations per the project plan.
+## Dependencies
 
----
+- ROS 2 Humble
+- `gazebo_ros`
+- `slam_toolbox`
+- `nav2_bringup`
+- `python3-opencv`
+- `rqt`
+- All other standard ROS 2 packages.
 
-## Workspace Layout
+## Build Instructions
 
-This folder is a ROS 2 workspace (`synapse_ws`). Key packages:
+1.  Clone this repository into a new workspace's `src` directory (e.g., `ai_robot_ws/src`).
+2.  Navigate to the workspace root: `cd ai_robot_ws`
+3.  Install dependencies: `rosdep install -i --from-path src -y`
+4.  Build the workspace: `colcon build --symlink-install`
 
-- `synapse_interfaces`: Custom ROS 2 messages/services/actions for persons, memories, and behaviors.
-- `synapse_bringup`: Launch files to bring up sensors and baseline system.
-- `synapse_base`: Base control and motor interface; subscribes to `/cmd_vel` to drive the robot.
-- `synapse_perception`: Camera processing, face detection/recognition, person tracking; publishes `/detected_persons`.
-- `synapse_memory`: Cognitive core; SQLite for person profiles and vector DB for conversational memories.
-- `synapse_interaction`: Conversation manager, STT/LLM/TTS pipeline, prompt construction, logging.
-- `synapse_emotion`: Emotion engine (finite-state machine) with events and decay; publishes `/emotion/state`.
-- `synapse_display`: Face/eyes and UI overlay rendering on an LCD/OLED; subscribes to emotion and status.
-- `synapse_behaviors`: High-level behaviors: Patrol, Seek-and-Greet, Person Following.
-- `synapse_description`: Robot description (URDF/Xacro), meshes, and description launch (robot_state_publisher).
-- `synapse_navigation`: SLAM (slam_toolbox), Nav2 launch/config, mapping and navigation utilities.
-- `synapse_teleop`: Keyboard/controller teleoperation for bring-up and testing.
+## How to Run the Simulation
 
-Directory tree (abbreviated):
+Source the workspace in every new terminal: `source install/setup.bash`
 
-```
-synapse_ws/
-├─ src/
-│  ├─ synapse_interfaces/        # msg/srv/action definitions
-│  ├─ synapse_bringup/           # launch/
-│  ├─ synapse_base/              # src/
-│  ├─ synapse_perception/        # src/
-│  ├─ synapse_memory/            # src/
-│  ├─ synapse_interaction/       # src/
-│  ├─ synapse_emotion/           # src/
-│  ├─ synapse_display/           # src/
-│  ├─ synapse_behaviors/         # src/
-│  ├─ synapse_navigation/        # launch/, config/, src/
-│  └─ synapse_teleop/            # src/
-```
+### Task 1: Mapping
 
----
-
-## Recommended Hardware (Summary)
-
-- Compute Unit (SBC)
-  - NVIDIA Jetson Orin Nano 8GB: Best for multiple NNs (vision + ASR) with CUDA acceleration.
-  - NVIDIA Jetson Xavier NX: Proven balance of performance and power.
-  - Raspberry Pi 5 (8GB) + NPU (Intel NCS2/Coral USB): Cost-effective if GPU not required.
-
-- Chassis & Drivetrain
-  - 4WD differential base (e.g., Rover/JetBot-style) with quadrature encoders.
-  - Motor driver: Roboclaw 2x7A or Cytron MDD10A with encoder interface board.
-  - IMU (optional but recommended): Bosch BNO055 or MPU-9250/MPU-6050.
-
-- Primary Sensor (Spatial)
-  - 360° LiDAR: RPLIDAR A2M8 (budget), YDLIDAR G4 (mid), SLAMTEC S2 (better indoor range).
-  - Alternatively: Hokuyo URG-04LX-UG01 (reliable, narrow FOV).
-
-- Secondary Sensor (Vision/Depth)
-  - Intel RealSense D435/D455 (widely supported, ROS 2 driver).
-  - Orbbec Astra/Astra+ (ROS drivers available).
-  - Luxonis OAK-D (onboard NN, depth AI).
-
-- Audio System
-  - 4/6-mic array: ReSpeaker USB Mic Array v2.0 or 4-Mic Pi HAT; MiniDSP UMA-16 for advanced beamforming.
-
-- Interaction/Display
-  - 2–3.5" SPI/I2C TFT/OLED (Waveshare 2.8"/3.5" IPS SPI) or a small HDMI screen.
-
-- Power System
-  - 3S/4S LiPo or 2S–3S Li-ion pack with BMS.
-  - 5V/12V regulators and power distribution board (PD-BEC).
-  - Smart charging dock (optional) + contact pads for auto-docking.
-
-Detailed hardware integration and wiring will be documented alongside each driver node.
-
----
-
-## Prerequisites
-
-- OS: Ubuntu 22.04 LTS
-- ROS 2: Humble (preferred) or Iron
-- Compiler/Build: colcon, CMake, Python 3.10
-- Graphics/Compute: Jetson CUDA/cuDNN (if on Jetson), OpenCV
-- Device Drivers: LiDAR, Depth Camera, Microphone array
-- Optional Accelerators: Intel NCS2, Coral Edge TPU
-
-Install ROS 2 Humble (Desktop + Dev Tools):
+This launch file starts the simulation and SLAM. Drive the robot around with your keyboard to build a map.
 
 ```bash
-sudo apt update && sudo apt install -y curl gnupg lsb-release
-sudo apt update && sudo apt install -y ros-humble-desktop ros-humble-ros-base \
-  ros-humble-navigation2 ros-humble-nav2-bringup ros-humble-slam-toolbox \
-  ros-humble-teleop-twist-keyboard ros-humble-xacro ros-humble-rqt* \
-  python3-colcon-common-extensions python3-rosdep python3-vcstool git
-sudo rosdep init || true
-rosdep update
-echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+# Launch the mapping stack
+ros2 launch ai_robot_core mapping.launch.py
 ```
 
-Sensor Drivers (examples; pick those matching your hardware):
+**In another terminal, run `teleop_twist_keyboard`:**
 
 ```bash
-# Intel RealSense
-sudo apt install -y ros-humble-realsense2-camera ros-humble-realsense2-description
-
-# RPLIDAR
-sudo apt install -y ros-humble-rplidar-ros
-
-# Hokuyo
-sudo apt install -y ros-humble-urg-node
-
-# Common vision stack
-sudo apt install -y ros-humble-image-common ros-humble-image-transport-plugins
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
 
-Python ecosystem (create a venv, optional but recommended):
+When you have a good map, save it:
 
 ```bash
-sudo apt install -y python3-venv python3-pip
-python3 -m venv ~/synapse_venv
-source ~/synapse_venv/bin/activate
-pip install --upgrade pip
-
-# Core ML/AI and utilities (to be refined per package):
-pip install opencv-python numpy scipy scikit-learn
-pip install face-recognition dlib==19.24.2  # Requires build tools; see notes below
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
-pip install sentence-transformers chromadb
-pip install pydantic fastapi uvicorn  # internal APIs if needed
-pip install sounddevice soundfile vosk  # offline STT option
-pip install TTS==0.22.0 or gTTS  # pick one TTS engine
-pip install python-dotenv
+# Make a 'maps' directory if it doesn't exist
+mkdir -p maps
+# Save the map
+ros2 run nav2_map_server map_saver_cli -f maps/my_map
 ```
 
-Notes:
+### Task 2: Navigation
 
-- `dlib` may require `sudo apt install build-essential cmake libopenblas-dev liblapack-dev libx11-dev libgtk-3-dev`.
-- On Jetson, use JetPack’s OpenCV/CUDA and platform-specific wheels for PyTorch.
-
----
-
-## Build the Workspace
-
-From the workspace root (this folder):
+This launch file starts the simulation and the full Nav2 stack, loading your saved map. You can set navigation goals in RViz.
 
 ```bash
-# If using a venv:
-source ~/synapse_venv/bin/activate
-
-# Source ROS 2
-source /opt/ros/humble/setup.bash
-
-# Install dependencies (when package manifests are complete):
-rosdep install --from-paths src --ignore-src -r -y
-
-# Build
-colcon build --symlink-install
-
-# Source the overlay
-source install/setup.bash
+# Launch the navigation stack
+ros2 launch ai_robot_core navigation.launch.py map_file:=$(pwd)/maps/my_map.yaml
 ```
 
-Add to ~/.bashrc for convenience:
+### Task 3: Full AI Application (The "Everything" File)
+
+This starts everything: the simulation, Nav2, and all AI "brain" nodes and the UI.
 
 ```bash
-echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
-echo "source $(pwd)/install/setup.bash" >> ~/.bashrc
+# Launch the full application
+ros2 launch ai_robot_core full_ai_app.launch.py map_file:=$(pwd)/maps/my_map.yaml
 ```
 
----
+The robot will now autonomously navigate and interact with people (or a simple human model) you can add to the Gazebo world.
 
-## Configuration and Calibration
+## How to Deploy on Real Hardware
 
-- TF Frames: `map` -> `odom` -> `base_link` -> `laser` / `camera_link` / `imu_link`
-- Base kinematics: Set wheel radius, track width, max velocity/acceleration, and encoder ticks per revolution in `synapse_base`.
-- Sensor poses: Configure static transforms in `synapse_bringup` (e.g., `static_transform_publisher`).
-- Nav2 configuration: Costmaps, inflation, planner/controller parameters in `synapse_navigation/config`.
-- Camera/LiDAR: Verify device IDs, frame IDs, resolution, and FPS.
+To run this project on a real robot, you will need to make some modifications to the launch files and potentially the code.
 
----
+### Hardware Requirements
 
-## Running the System (By Stages)
+- A differential drive robot base with ROS 2 drivers that publish odometry (`/odom`) and subscribe to velocity commands (`/cmd_vel`).
+- A computer to run the ROS 2 nodes (e.g., a Raspberry Pi 4 or a laptop).
+- A 3D camera (e.g., Intel RealSense) with ROS 2 drivers that publish camera images and depth information.
 
-Below are standard bring-up flows aligned with the development steps.
+### Configuration for Real Hardware
 
-Robot Description (URDF/Xacro):
+1.  **Disable Gazebo**: In the launch files (`mapping.launch.py`, `navigation.launch.py`, `full_ai_app.launch.py`), you will need to remove or comment out the Gazebo launch include.
 
-- Visualize/publish the robot model and TF tree:
-  - ros2 launch synapse_description description.launch.py
-- In the all-in-one bringup this runs by default; you can toggle with:
-  - ros2 launch synapse_bringup robot_bringup.launch.py start_description:=true
+2.  **Use Real Sensor Drivers**: Instead of launching Gazebo, you will need to launch the drivers for your robot's hardware (robot base, camera, etc.).
 
-### Step 1: Foundation & Basic Mobility
+3.  **Update `use_sim_time`**: In all launch files and configuration files, you will need to set `use_sim_time` to `false`.
 
-Bring up the base and drive with keyboard to verify motion.
+### Example Launch File for Real Hardware
 
-```bash
-# Terminal 1
-source install/setup.bash
-ros2 run synapse_base base_driver_node
+Here is an example of how you might modify the `full_ai_app.launch.py` for a real robot:
 
-# Terminal 2 (teleop)
-source install/setup.bash
-ros2 run teleop_twist_keyboard teleop_twist_keyboard  # or:
-ros2 run synapse_teleop keyboard_teleop
+```python
+# full_ai_app_real.launch.py
+
+import os
+from ament_index_python.packages import get_package_share_directory
+from launch import LaunchDescription
+from launch.actions import IncludeLaunchDescription, ExecuteProcess
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch_ros.actions import Node
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
+
+def generate_launch_description():
+    pkg_ai_robot_core = get_package_share_directory('ai_robot_core')
+    map_file = LaunchConfiguration('map_file')
+
+    # Real robot drivers (replace with your robot's drivers)
+    robot_drivers = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(get_package_share_directory('your_robot_driver_package'), 'launch', 'your_robot.launch.py')
+        )
+    )
+
+    # Navigation
+    navigation = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(pkg_ai_robot_core, 'launch', 'navigation.launch.py')
+        ),
+        launch_arguments={'map_file': map_file, 'use_sim_time': 'false'}.items()
+    )
+
+    # Brain
+    # ... (the same as in the simulation launch file)
+
+    # UI
+    # ... (the same as in the simulation launch file)
+
+    return LaunchDescription([
+        DeclareLaunchArgument(
+            'map_file',
+            default_value=os.path.join(pkg_ai_robot_core, 'maps', 'my_map.yaml'),
+            description='Full path to map file to load'),
+        robot_drivers,
+        navigation,
+        # ... (the rest of the nodes)
+    ])
 ```
 
-Expected:
+## How to Customize
 
-- `synapse_base` subscribes `/cmd_vel` and drives motors.
-- Odometry published (`/odom`) if available.
-
-### Step 2: Perception & Sensing
-
-Start sensors (LiDAR + Depth Camera):
-
-```bash
-# Example: RPLIDAR
-ros2 launch rplidar_ros rplidar.launch.py serial_baudrate:=115200 serial_port:=/dev/ttyUSB0 frame_id:=laser
-
-# Example: Intel RealSense
-ros2 launch realsense2_camera rs_launch.py align_depth:=true pointcloud.enable:=true
-
-# Or use unified bringup once provided:
-ros2 launch synapse_bringup sensors.launch.py
-```
-
-Verify topics:
-
-- `/scan` (sensor_msgs/LaserScan)
-- `/camera/color/image_raw`, `/camera/depth/image_rect_raw`, `/camera/depth/color/points` (or `/points2`)
-
-### Step 3: Autonomous Navigation (SLAM + Nav2)
-
-Mapping:
-
-```bash
-# Start SLAM with slam_toolbox
-ros2 launch slam_toolbox online_async_launch.py
-
-# Visualize in RViz2
-rviz2
-# Add map, TF, LaserScan, Odometry; drive around with teleop to build map.
-
-# Save map
-ros2 run nav2_map_server map_saver_cli -f ~/maps/home_map
-```
-
-Navigation:
-
-```bash
-# Bring up Nav2 with your saved map
-ros2 launch nav2_bringup navigation_launch.py use_sim_time:=false map:=~/maps/home_map.yaml
-
-# Or use a curated launch:
-ros2 launch synapse_navigation nav2_bringup.launch.py map:=~/maps/home_map.yaml
-```
-
-Send goals from RViz2 via “2D Nav Goal” or via action:
-
-```bash
-ros2 action send_goal /navigate_to_pose nav2_msgs/action/NavigateToPose "{pose: { header: {frame_id: 'map'}, pose: { position: {x: 1.0, y: 0.5, z: 0.0}, orientation: {z: 0.0, w: 1.0}}}}"
-```
-
-### Step 4: Cognitive Core (Memory & Person Profiles)
-
-Start the memory service:
-
-```bash
-ros2 run synapse_memory memory_server
-```
-
-APIs (ROS 2 services; details in `synapse_interfaces`):
-
-- `add_person(name, face_encoding, first_seen_date, notes)`
-- `get_person_by_face(face_encoding)`
-- `add_conversation_memory(person_id, text, embedding, timestamp)`
-- `retrieve_relevant_memories(person_id, query_text)`
-
-Configuration:
-
-- SQLite database path: `~/.synapse/memory.db`
-- Vector DB (ChromaDB) path: `~/.synapse/chroma/`
-
-### Step 5: Vision Intelligence
-
-Run perception node:
-
-```bash
-ros2 run synapse_perception face_perception_node
-```
-
-Expected:
-
-- Subscribes: camera image stream (e.g., `/camera/color/image_raw`)
-- Publishes: `/detected_persons` with bounding boxes, IDs (`UNKNOWN` if not matched), and scores.
-- Calls memory server to resolve identities by face encodings.
-
-### Step 6: Interaction & Personality
-
-Environment:
-
-```bash
-# Choose your provider and set keys before launching interaction stack
-export LLM_PROVIDER=openai   # or: google
-export OPENAI_API_KEY=...
-export GOOGLE_API_KEY=...
-export SYNAPSE_TTS_ENGINE=coqui  # or: gtts
-export SYNAPSE_STT_ENGINE=vosk   # or: whisper, external API
-```
-
-Launch:
-
-```bash
-ros2 run synapse_emotion emotion_engine
-ros2 run synapse_display face_display_node
-ros2 run synapse_interaction conversation_manager
-```
-
-Pipeline:
-
-- Perception detects a known person nearby.
-- Conversation Manager activates mic, performs STT, queries memory for relevant context, crafts LLM prompt with emotion state, calls LLM, does TTS, and appends memory.
-
-### Step 7: Proactive & Advanced Behaviors
-
-Patrol / Seek-and-Greet / Person Following:
-
-```bash
-ros2 run synapse_behaviors behavior_manager
-```
-
-- Patrol: cycles waypoints (“living_room”, “kitchen”, etc.).
-- Seek-and-Greet: interrupts patrol if a known person appears; approaches at safe distance; initiates greeting.
-- Person Following: sets moving goal in Nav2 from tracked person position.
-
----
-
-## Key Topics and Interfaces (Overview)
-
-- Base/Control:
-  - `/cmd_vel` (geometry_msgs/Twist)
-  - `/odom` (nav_msgs/Odometry)
-  - `/tf`, `/tf_static` (tf2_msgs/TFMessage)
-- Sensors:
-  - `/scan` (sensor_msgs/LaserScan)
-  - `/camera/*` (sensor_msgs/Image, sensor_msgs/PointCloud2)
-- Perception:
-  - `/detected_persons` (synapse_interfaces/msg/DetectedPersons)
-- Memory:
-  - Services: `AddPerson`, `GetPersonByFace`, `AddConversationMemory`, `RetrieveRelevantMemories`
-- Interaction:
-  - `/conversation/transcript`, `/conversation/response` (std_msgs/String)
-  - `/emotion/state` (synapse_interfaces/msg/EmotionState)
-- Navigation:
-  - Nav2 actions: `/navigate_to_pose` (nav2_msgs/NavigateToPose)
-  - `/amcl_pose` or SLAM pose topic
-- Behaviors:
-  - `/behavior/state`, `/behavior/event`
-
-Message/service definitions live in `synapse_interfaces`.
-
----
-
-## Development Notes
-
-- Coding Standards: Python (PEP 8), C++ (C++17), ROS 2 best practices (composable nodes where possible).
-- Logging: Use `rclcpp`/`rclpy` logging with structured context; avoid excessive verbosity on SBCs.
-- Parameters: Expose node params via YAML and declare parameters in code; use lifecycle nodes for critical stacks.
-- Testing: Include unit tests (pytest/rostest) and bag short datasets for regression.
-- Performance: Use image transport for camera; throttle expensive computations; leverage GPU/NPU where available.
-
----
-
-## Troubleshooting
-
-- Permissions: Add your user to `dialout` for serial LiDAR/motor drivers.
-  ```bash
-  sudo usermod -a -G dialout $USER
-  ```
-- Audio:
-  - Verify ALSA devices: `arecord -l`, `aplay -l`
-  - Set default mic/speaker via `pavucontrol` or `.asoundrc`
-- RealSense:
-  - If frames drop, reduce FPS and resolution; turn off IR if not needed.
-- Nav2 fails to plan:
-  - Check TF (no jumps), footprint size, costmap inflation, and map frame consistency.
-- Face recognition poor:
-  - Ensure good lighting, increase input resolution, collect multiple embeddings per person.
-
----
-
-## Security & Privacy
-
-- Store API keys in environment variables or `.env` not committed to VCS.
-- Encrypt or restrict access to `~/.synapse` if storing personal data.
-- Provide opt-in, data export, and wipe commands for all memories.
-
----
-
-## Roadmap
-
-- Full node implementations and launch compositions per package.
-- Robust person re-identification (multi-view embeddings).
-- On-device STT/TTS optimizations for offline operation.
-- Auto-docking and autonomous charging.
-- Multi-room map management with semantic labels.
-
----
-
-## License
-
-To be determined. For now, assume all code is provided under an OSI-approved license compatible with ROS 2 packages.
-
----
-
-## Acknowledgments
-
-Built on top of the ROS 2 ecosystem, Nav2, slam_toolbox, OpenCV, and the open-source AI community.
+- **LLM Integration**: The "brain" is in `ai_robot_core/nodes/interaction_manager_node.py`. WIP
+- **Face Recognition**: The recognition logic in `face_recognition_node.py` is a stub. You can replace the fake embedding with a real one (e.g., from `face_recognition` or a similar library) to enable true recognition.

@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ai_robot">
+
+  <xacro:include filename="$(find ai_robot_core)/urdf/gazebo_control.xacro" />
+
+  <link name="base_footprint"/>
+
+  <joint name="base_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0.05" rpy="0 0 0"/>
+  </joint>
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.3 0.2 0.1"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0.0 0.0 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.3 0.2 0.1"/>
+      </geometry>
+    </collision>
+    <inertial>
+        <mass value="5"/>
+        <inertia ixx="0.04" ixy="0.0" ixz="0.0" iyy="0.07" iyz="0.0" izz="0.09"/>
+    </inertial>
+  </link>
+
+  <xacro:macro name="wheel" params="prefix x_offset y_offset">
+    <link name="${prefix}_wheel_link">
+      <visual>
+        <geometry>
+          <cylinder radius="0.05" length="0.04"/>
+        </geometry>
+        <material name="black">
+          <color rgba="0.0 0.0 0.0 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <cylinder radius="0.05" length="0.04"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.5"/>
+        <inertia ixx="0.0004" ixy="0.0" ixz="0.0" iyy="0.0004" iyz="0.0" izz="0.0008"/>
+      </inertial>
+    </link>
+
+    <joint name="${prefix}_wheel_joint" type="continuous">
+      <parent link="base_link"/>
+      <child link="${prefix}_wheel_link"/>
+      <origin xyz="${x_offset} ${y_offset} -0.025" rpy="-1.5707 0 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+  </xacro:macro>
+
+  <xacro:wheel prefix="front_left" x_offset="0.1" y_offset="0.12"/>
+  <xacro:wheel prefix="front_right" x_offset="0.1" y_offset="-0.12"/>
+  <xacro:wheel prefix="rear_left" x_offset="-0.1" y_offset="0.12"/>
+  <xacro:wheel prefix="rear_right" x_offset="-0.1" y_offset="-0.12"/>
+
+  <link name="camera_link">
+    <visual>
+      <geometry>
+        <box size="0.02 0.05 0.05"/>
+      </geometry>
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1.0"/>
+      </material>
+    </visual>
+     <collision>
+      <geometry>
+        <box size="0.02 0.05 0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+        <mass value="0.1"/>
+        <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
+    </inertial>
+  </link>
+
+  <joint name="camera_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera_link"/>
+    <origin xyz="0.15 0 0.025" rpy="0 0 0"/>
+  </joint>
+
+  <link name="camera_depth_optical_frame"/>
+
+  <joint name="camera_depth_optical_joint" type="fixed">
+    <parent link="camera_link"/>
+    <child link="camera_depth_optical_frame"/>
+    <origin xyz="0 0 0" rpy="-1.5707 0 -1.5707"/>
+  </joint>
+
+</robot>

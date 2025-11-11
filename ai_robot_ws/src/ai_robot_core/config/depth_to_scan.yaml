@@ -1,0 +1,6 @@
+depthimage_to_laserscan_node:
+  ros__parameters:
+    scan_height: 10
+    range_min: 0.45
+    range_max: 10.0
+    output_frame: camera_depth_optical_frame

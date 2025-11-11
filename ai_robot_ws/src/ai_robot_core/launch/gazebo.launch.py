@@ -1,0 +1,40 @@
+import os
+from ament_index_python.packages import get_package_share_directory
+from launch import LaunchDescription
+from launch.actions import IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    pkg_gazebo_ros = get_package_share_directory('gazebo_ros')
+    pkg_ai_robot_core = get_package_share_directory('ai_robot_core')
+
+    # Gazebo launch
+    gazebo = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(pkg_gazebo_ros, 'launch', 'gazebo.launch.py'),
+        ),
+        launch_arguments={'world': os.path.join(pkg_ai_robot_core, 'worlds', 'ai_robot_world.world')}.items()
+    )
+
+    # Robot state publisher
+    robot_state_publisher = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(pkg_ai_robot_core, 'launch', 'robot_state_publisher.launch.py')
+        ),
+        launch_arguments={'use_sim_time': 'true'}.items()
+    )
+
+    # Spawn entity
+    spawn_entity = Node(
+        package='gazebo_ros',
+        executable='spawn_entity.py',
+        arguments=['-topic', 'robot_description', '-entity', 'ai_robot'],
+        output='screen'
+    )
+
+    return LaunchDescription([
+        gazebo,
+        robot_state_publisher,
+        spawn_entity,
+    ])

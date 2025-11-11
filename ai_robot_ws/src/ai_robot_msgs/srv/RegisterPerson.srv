@@ -1,0 +1,5 @@
+# Register a new unknown person in the database
+string name_hint  # e.g., "Unknown"
+float32[] face_encoding
+---
+string person_id  # The new unique ID for this person

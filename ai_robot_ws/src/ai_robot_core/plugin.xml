@@ -1,0 +1,15 @@
+<library path="ui.robot_ui_plugin">
+  <class name="RobotUIPlugin" type="ui.robot_ui_plugin.RobotUIPlugin" base_class_type="rqt_gui_py::Plugin">
+    <description>
+      A Python GUI plugin for the AI Robot.
+    </description>
+    <qtgui>
+      <group>
+        <label>Visualization</label>
+      </group>
+      <label>Synapse Face</label>
+      <icon type="theme">image-x-generic</icon>
+      <statustip>A Python GUI plugin for the Robot.</statustip>
+    </qtgui>
+  </class>
+</library>

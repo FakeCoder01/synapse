@@ -1,0 +1,10 @@
+TASK.md
+TASK-NEXT.md
+TASK-FINAL.md
+
+build/
+logs/
+install/
+
+robot_memory.db
+.env

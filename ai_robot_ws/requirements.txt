@@ -1,0 +1,4 @@
+opencv
+face_recognition
+numpy<2
+python-dotenv
