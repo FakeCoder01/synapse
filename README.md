@@ -24,6 +24,8 @@ This project is a complete ROS 2 Humble simulation of an intelligent, interactiv
 - `nav2_bringup`
 - `python3-opencv`
 - `rqt`
+- `rviz2`
+- `gazebo`
 - All other standard ROS 2 packages.
 
 ## Build Instructions
