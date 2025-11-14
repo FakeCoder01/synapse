@@ -17,6 +17,12 @@ class InteractionManagerNode(Node):
             self.detected_people_callback,
             10)
         
+        self.audio_transcription_subscription = self.create_subscription(
+            String,
+            '/robot/audio_transcription',
+            self.audio_transcription_callback,
+            10)
+        
         self.get_conversation_client = self.create_client(GetConversation, '/get_conversation')
         self.store_conversation_client = self.create_client(StoreConversation, '/store_conversation')
         
@@ -39,6 +45,25 @@ class InteractionManagerNode(Node):
                 self.greet_known_person(largest_person)
             else:
                 self.greet_unknown_person(largest_person)
+
+    def audio_transcription_callback(self, msg):
+        """Handles transcribed speech from the user."""
+        input_text = msg.data
+        self.get_logger().info(f'Heard: "{input_text}"')
+        # Here you would typically get the person_id of the speaker
+        # For now, we'll assume it's the last person we greeted or a default
+        person_id = "person_1" 
+
+        # Save the user's speech to memory
+        self.save_line(person_id, "person", input_text)
+
+        # Get conversation history and call the LLM stub for a response
+        # In a real scenario, you'd get the history before calling the LLM
+        response_text = self.call_llm_api([], input_text)
+        
+        # Speak the response
+        self.publish_speech(response_text)
+        self.save_line(person_id, "robot", response_text)
 
     def greet_known_person(self, person):
         req = GetConversation.Request()
