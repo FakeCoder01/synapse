@@ -1,5 +1,0 @@
-  File "/home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/lib/python3.10/site-packages/ai_robot_hardware_drivers/ir_sensor_node.py", line 109
-    left_
-         ^
-SyntaxError: expected 'except' or 'finally' block
-
