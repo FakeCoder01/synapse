@@ -1,6 +1,6 @@
 # AI Pet Robot - The Definitive Guide (ROS 2 Humble)
 
-Welcome to the definitive guide for the AI Pet Robot, a comprehensive ROS 2 Humble project. This document is structured as a complete user manual, covering everything from the high-level architecture and data flows to granular, step-by-step instructions for simulation, hardware assembly, and real-world deployment in a new environment.
+Welcome to the definitive guide for the AI Pet Robot, a comprehensive ROS 2 Humble project. This document is structured as a complete user manual, covering everything from the high-level architecture and data flows to granular, step-by-step instructions for simulation and real-world hardware deployment.
 
 ![RViz View](https://i.imgur.com/8i9hZkL.png)
 
@@ -14,13 +14,14 @@ Welcome to the definitive guide for the AI Pet Robot, a comprehensive ROS 2 Humb
     *   [Core Workflow 2: The Conversation Loop](#core-workflow-2-the-conversation-loop)
 3.  [**Part 2: The Simulation Environment**](#part-2-the-simulation-environment)
     *   [Prerequisites](#prerequisites)
-    *   [Build & Run Instructions](#build--run-instructions)
+    *   [Build Instructions](#build-instructions)
+    *   [Step-by-Step: Running the Simulation](#step-by-step-running-the-simulation)
 4.  [**Part 3: Building and Deploying the Physical Robot**](#part-3-building-and-deploying-the-physical-robot)
     *   [Hardware Bill of Materials](#hardware-bill-of-materials)
     *   [Assembly & Wiring Guide](#assembly--wiring-guide)
     *   [Host Computer & Network Setup](#host-computer--network-setup)
     *   [Firmware Flashing Guide](#firmware-flashing-guide)
-    *   [**Critical First Run: Mapping a New Environment**](#critical-first-run-mapping-a-new-environment)
+    *   [Critical First Run: Mapping a New Environment](#critical-first-run-mapping-a-new-environment)
     *   [Running the Full AI Stack on Hardware](#running-the-full-ai-stack-on-hardware)
 5.  [**Part 4: Developer's Guide & Customization**](#part-4-developers-guide--customization)
     *   [File-by-File Code Explanation](#file-by-file-code-explanation)
@@ -52,7 +53,6 @@ This project is an educational tool designed to be a fully transparent, function
 *   `firmware`: Contains the Arduino code for the ESP8266 microcontroller.
 
 ### Node-by-Node Breakdown
-*(This is a more detailed explanation of the nodes' roles)*
 
 #### Core Logic (`ai_robot_core`)
 *   **`face_recognition_node`**: The robot's "eyes." It processes raw video, finds faces, generates a unique (but deterministic) "embedding" for each face, and asks the `memory_manager` to identify it.
@@ -94,30 +94,126 @@ This project is an educational tool designed to be a fully transparent, function
 *   `colcon`, `git`.
 *   `sudo apt-get update && sudo apt-get install ros-humble-slam-toolbox ros-humble-nav2-bringup`
 
-### Build & Run Instructions
+### Build Instructions
 1.  **Clone**: `mkdir -p ai_robot_ws/src && cd ai_robot_ws/src && git clone <repo_url>`
 2.  **Install Dependencies**: `cd .. && rosdep install -i --from-path src -y --rosdistro humble`
 3.  **Build**: `colcon build --symlink-install`
 4.  **Source**: In every new terminal, `cd ~/ai_robot_ws && source install/setup.bash`
+
+### Step-by-Step: Running the Simulation
+
+Always source your workspace first: `cd ~/ai_robot_ws && source install/setup.bash`
+
+#### Step 1. Create a Map (SLAM)
+1.  **Launch Mapping**:
+    ```bash
+    ros2 launch ai_robot_core mapping.launch.py
+    ```
+2.  **Launch Keyboard Control**: In a **new terminal**:
+    ```bash
+    ros2 launch ai_robot_core teleop.launch.py
+    ```
+3.  **Drive**: Focus the teleop terminal and use the keys to drive the robot around the Gazebo world. Watch the map build in RViz.
+4.  **Save**: When the map is complete, save it from your workspace directory (`~/ai_robot_ws`):
+    ```bash
+    mkdir -p maps
+    ros2 run nav2_map_server map_saver_cli -f maps/my_map
+    ```
+
+#### Step 2. Run the Full AI Simulation
+This single command uses your saved map to launch the robot in a fully autonomous, interactive state.
+```bash
+ros2 launch ai_robot_core full_ai_app.launch.py map:=$(pwd)/maps/my_map.yaml
+```
 
 ---
 
 ## Part 3: Building and Deploying the Physical Robot
 
 ### Hardware Bill of Materials
-*(Same as previous README)*
+*   **Chassis**: A 4-wheel drive robot chassis with TT motors.
+*   **Microcontroller**: 1x ESP8266 (NodeMCU or a similar board).
+*   **Motor Driver**: 1x L298N Dual H-Bridge Motor Driver.
+*   **Host Computer**: 1x Raspberry Pi 4 (4GB+ recommended) or a similar single-board computer.
+*   **Camera**: 1x Microsoft Xbox 360 Kinect (Model 1414 or 1473) and the special USB/Power adapter it requires.
+*   **Audio**: 1x standard USB Microphone and 1x standard USB-powered Speaker.
+*   **Power**:
+    *   A 7.4V-12V battery pack (e.g., a 2S LiPo or a holder for 6x AA batteries) to power the L298N motor driver.
+    *   A 5V USB power bank to provide clean power to the Raspberry Pi.
+    *   The ESP8266 will be powered directly from the L298N's onboard 5V regulator.
 
 ### Assembly & Wiring Guide
-*(Same as previous README, with diagram)*
+
+This wiring is crucial for the firmware to work correctly. Double-check all connections.
+
+```
++-----------------+      +----------------+      +-----------------+
+|   ESP8266       |      | L298N Driver   |      |   Motors        |
+| (NodeMCU)       |      |                |      |                 |
+|                 |      |                |      |                 |
+|      D1 (GPIO5) |----->| IN1            |      |                 |
+|      D2 (GPIO4) |----->| IN2            |      |                 |
+|      D3 (GPIO0) |----->| ENA (Enable A) |      |                 |
+|                 |      |                |      |                 |
+|      D5 (GPIO14)|----->| IN3            |      |                 |
+|      D6 (GPIO12)|----->| IN4            |      |                 |
+|      D7 (GPIO13)|----->| ENB (Enable B) |      |                 |
+|                 |      |                |      |                 |
+|             GND |<---->| GND            |<---->| Battery (-)     |
+|             VIN |<-----| 5V Output      |      |                 |
++-----------------+      |                |      |                 |
+                         | 12V Input      |<---->| Battery (+)     |
+                         |                |      | (7.4V - 12V)    |
+                         |                |      |                 |
+                         | OUT1 & OUT2    |----->| Left Motors     |
+                         | OUT3 & OUT4    |----->| Right Motors    |
+                         +----------------+      +-----------------+
+```
+**Assembly Notes**:
+*   **Motor Wiring**: Wire the two left-side motors in parallel to the `OUT1` and `OUT2` terminals of the L298N. Wire the two right-side motors in parallel to `OUT3` and `OUT4`.
+*   **L298N Jumper**: Ensure the 5V regulator jumper on the L298N is **in place**. This enables the `5V Output` terminal that will power the ESP8266.
+*   **Common Ground**: The most common point of failure is a missing common ground. The negative terminal of your motor battery, the `GND` on the L298N, and the `GND` on the ESP8266 must all be connected.
 
 ### Host Computer & Network Setup
-*(Same as previous README)*
+1.  **Install OS**: Install a fresh copy of Ubuntu 22.04 Server on your Raspberry Pi's microSD card.
+2.  **Install ROS 2**: Follow the official ROS 2 documentation to install the `ros-humble-ros-base` package.
+3.  **Connect Peripherals**:
+    *   Connect the Kinect camera's USB adapter to one of the Pi's blue USB 3.0 ports.
+    *   Connect the USB microphone and USB speakers to the remaining USB ports.
+4.  **Install & Enable MQTT Broker**: The broker is the message hub between the Pi and the ESP8266.
+    ```bash
+    sudo apt-get update
+    sudo apt-get install mosquitto mosquitto-clients
+    sudo systemctl enable mosquitto
+    sudo systemctl start mosquitto
+    ```
+5.  **Network Configuration**:
+    *   Connect the Raspberry Pi to your WiFi network.
+    *   Find the Pi's IP address using `ip a`. Note this down, as you will need it for the firmware.
 
 ### Firmware Flashing Guide
-*(Same as previous README)*
+1.  **Setup Arduino IDE**:
+    *   Download and install the Arduino IDE on your main computer.
+    *   Go to `File > Preferences`. In "Additional Boards Manager URLs," add: `http://arduino.esp8266.com/stable/package_esp8266com_index.json`
+    *   Go to `Tools > Board > Boards Manager...`, search for `esp8266`, and install the package by ESP8266 Community.
+    *   Select your board from the `Tools > Board` menu (e.g., "NodeMCU 1.0 (ESP-12E Module)").
+2.  **Install Libraries**:
+    *   Go to `Sketch > Include Library > Manage Libraries...`.
+    *   Search for and install `PubSubClient` by Nick O'Leary.
+    *   Search for and install `ArduinoJson` by Benoit Blanchon.
+3.  **Configure and Flash**:
+    *   Open the `firmware/esp_firmware_8266.ino` file from this project in the Arduino IDE.
+    *   **Crucially, you must edit these three lines** with your own network details:
+        ```cpp
+        const char *SSID = "YOUR_WIFI_SSID";
+        const char *PASSWORD = "YOUR_WIFI_PASSWORD";
+        const char *MQTT_SERVER = "RASPBERRY_PI_IP_ADDRESS"; 
+        ```
+    *   Connect the ESP8266 to your computer via USB.
+    *   Select the correct port under `Tools > Port`.
+    *   Click the "Upload" button (the right-arrow icon).
 
 ### Critical First Run: Mapping a New Environment
-
 You cannot navigate in a new place without first creating a map. This process is called SLAM.
 
 1.  **Place the Robot**: Put your fully assembled, powered-on robot in the starting position of the area you want to map.
@@ -155,6 +251,9 @@ Now that you have a map, you can run the robot in its fully autonomous navigatio
 1.  **Verify Dependencies**: Ensure you have installed the hardware-specific Python packages on your host computer:
     ```bash
     sudo apt-get install python3-paho-mqtt python3-pyttsx3 python3-pyaudio
+    # WARNING: pykinect2 is difficult to install on Linux. This is a known
+    # challenge. You may need to research how to build it from source or
+    # use an alternative like the 'ros-humble-libfreenect-camera' package.
     ```
 2.  **Launch the Main Hardware Stack**: This is the primary command for running your physical robot. It starts all hardware drivers, the AI stack, and the Nav2 stack in navigation (not mapping) mode.
 
@@ -178,8 +277,6 @@ Your robot is now fully operational. It will localize itself in the map and is r
 ## Part 4: Developer's Guide & Customization
 
 ### File-by-File Code Explanation
-*(This section now lives under the Developer's Guide)*
-
 *   **Launch Files**: The launch directory contains scripts for orchestrating the startup of multiple nodes. The files are split to separate simulation (`full_ai_app.launch.py`) from hardware (`hardware_bringup.launch.py`) and to make core components like navigation (`nav2_bringup.launch.py`) reusable.
 *   **Configuration Files**: The `config` directory holds `.yaml` files. These files allow you to change node parameters (like robot speed, MQTT IP addresses, or sensor settings) without editing the Python code itself.
 *   **URDF Files**: The `.urdf.xacro` files define the robot's physical shape, joints, and mass. The `.xacro` format allows us to use variables and include files, making the definitions cleaner. The `gazebo_plugins.xacro` file is included to add simulation-only properties like the camera and motor plugins.
@@ -188,3 +285,4 @@ Your robot is now fully operational. It will localize itself in the map and is r
 ### How to Customize the AI's Personality
 *   **Conversation Logic**: The robot's conversational ability is defined entirely within the `call_llm_api` function in `ai_robot_core/nodes/interaction_manager_node.py`. You can easily add more `elif` conditions to check for different keywords and provide custom responses.
 *   **Face Recognition Tuning**: The strictness of face matching is controlled by the `min_distance` variable in `ai_robot_core/nodes/memory_manager_node.py`. Lower this value (e.g., to `0.5`) to make the robot less likely to incorrectly match a new face to a known one.
+*   **MQTT Broker**: To change the MQTT broker IP address for the hardware, edit the file `ai_robot_hardware_drivers/config/hardware_params.yaml`.
