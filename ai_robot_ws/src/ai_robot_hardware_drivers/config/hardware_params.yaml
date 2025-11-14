@@ -1,0 +1,4 @@
+esp8266_bridge:
+  ros__parameters:
+    mqtt_host: "192.168.1.100" # <-- IMPORTANT: Change this to the IP of your MQTT broker
+    mqtt_port: 1883

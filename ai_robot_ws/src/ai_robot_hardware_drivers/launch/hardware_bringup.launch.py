@@ -13,20 +13,20 @@ def generate_launch_description():
     
     # Declare launch arguments
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
-    map_file = LaunchConfiguration('map_file')
+    map_file = LaunchConfiguration('map')
+    params_file = LaunchConfiguration('params_file', default=os.path.join(core_pkg, 'config', 'nav2_params.yaml'))
+    hardware_params_file = LaunchConfiguration('hardware_params_file', default=os.path.join(drivers_pkg, 'config', 'hardware_params.yaml'))
 
     # --- Hardware Drivers ---
     
-    # ESP8266 Bridge for motors and sensors
     esp8266_bridge_node = Node(
         package='ai_robot_hardware_drivers',
         executable='esp8266_bridge_node',
         name='esp8266_bridge',
         output='screen',
-        # parameters=[os.path.join(drivers_pkg, 'config', 'your_config.yaml')] # Example
+        parameters=[hardware_params_file]
     )
 
-    # Kinect Camera Driver
     kinect_node = Node(
         package='ai_robot_hardware_drivers',
         executable='kinect_interface_node',
@@ -34,7 +34,6 @@ def generate_launch_description():
         output='screen'
     )
 
-    # Local Audio Driver (TTS/STT)
     audio_node = Node(
         package='ai_robot_hardware_drivers',
         executable='audio_interface_node',
@@ -44,7 +43,6 @@ def generate_launch_description():
 
     # --- Core AI and Robot Logic ---
 
-    # Robot State Publisher (uses URDF from core package)
     robot_state_publisher_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(core_pkg, 'launch', 'robot_state_publisher.launch.py')
@@ -52,13 +50,12 @@ def generate_launch_description():
         launch_arguments={'use_sim_time': use_sim_time}.items()
     )
 
-    # AI Brain Nodes (from core package)
     face_recognition_node = Node(
         package='ai_robot_core',
         executable='face_recognition_node',
         parameters=[{'use_sim_time': use_sim_time}],
         remappings=[
-            ('/camera/image_raw', '/camera/camera/image_raw'), # Remap to Kinect topic
+            ('/camera/image_raw', '/camera/camera/image_raw'),
         ]
     )
     
@@ -79,7 +76,7 @@ def generate_launch_description():
         executable='interaction_manager_node',
         parameters=[{'use_sim_time': use_sim_time}],
         remappings=[
-             ('/robot_speech_output', '/robot/tts'), # Connect to audio node
+             ('/robot_speech_output', '/robot/tts'),
         ]
     )
 
@@ -91,21 +88,20 @@ def generate_launch_description():
 
     # --- Navigation ---
     
-    # Nav2 Bringup (from core package)
-    navigation_launch = IncludeLaunchDescription(
+    nav2_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(core_pkg, 'launch', 'navigation.launch.py')
+            os.path.join(core_pkg, 'launch', 'nav2_bringup.launch.py')
         ),
         launch_arguments={
             'map': map_file,
             'use_sim_time': use_sim_time,
-            'params_file': os.path.join(core_pkg, 'config', 'nav2_params.yaml')
+            'params_file': params_file
         }.items()
     )
 
     return LaunchDescription([
         DeclareLaunchArgument(
-            'map_file',
+            'map',
             description='Full path to the map file to load for navigation.'
         ),
         
@@ -123,5 +119,5 @@ def generate_launch_description():
         person_follower_node,
         
         # Navigation
-        navigation_launch
+        nav2_launch
     ])

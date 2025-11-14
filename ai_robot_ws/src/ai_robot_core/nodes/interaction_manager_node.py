@@ -108,11 +108,32 @@ class InteractionManagerNode(Node):
         self.store_conversation_client.call_async(req)
 
     def call_llm_api(self, history, new_line):
-        # This is a stub for the user to replace with their own LLM API call
-        # import requests
-        # response = requests.post("https://api.llm.com/chat", json={"history": history, "new_line": new_line})
-        # return response.json()["text"]
-        return f"That's interesting. Can you tell me more?"
+        """
+        This is a functional, rule-based replacement for a real LLM API call.
+        It provides simple, interactive responses based on keywords.
+        """
+        new_line = new_line.lower()
+        if "hello" in new_line or "hi" in new_line:
+            return "Hello there! What can I do for you?"
+        elif "your name" in new_line:
+            return "I am a friendly AI pet robot."
+        elif "how are you" in new_line:
+            return "I am running on all cylinders! Thanks for asking."
+        elif "follow me" in new_line:
+            # This is an example of how you could trigger other robot actions.
+            # In a real implementation, you'd publish to a topic here.
+            return "I can't follow you yet, but that feature is coming soon!"
+        elif "what can you do" in new_line:
+            return "I can recognize faces, remember our conversations, and navigate around. Ask me to do something!"
+        else:
+            responses = [
+                "That's very interesting.",
+                "Tell me more about that.",
+                "I see. What else is on your mind?",
+                "Fascinating. Please continue."
+            ]
+            # Return a different response each time
+            return responses[datetime.datetime.now().second % len(responses)]
 
 
 def main(args=None):
