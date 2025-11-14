@@ -3,7 +3,7 @@ TASK-NEXT.md
 TASK-FINAL.md
 
 build/
-logs/
+log/
 install/
 
 robot_memory.db

@@ -43,10 +43,42 @@ class MemoryManagerNode(Node):
         self.conn.commit()
 
     def lookup_person_callback(self, request, response):
-        # This is a stub. A real implementation would use face recognition to identify the person.
+        """Looks up a person by comparing face encodings."""
         response.person_data = Person()
         response.person_data.is_known = False
         response.person_data.name = "Unknown"
+
+        try:
+            request_encoding = np.array(request.face_encoding, dtype=np.float32)
+            
+            cursor = self.conn.cursor()
+            cursor.execute("SELECT person_id, name, face_encoding_stub FROM people")
+            all_people = cursor.fetchall()
+
+            best_match_id = None
+            best_match_name = None
+            min_distance = 0.6 # Confidence threshold; lower is more strict.
+
+            for person_id, name, encoding_blob in all_people:
+                known_encoding = np.frombuffer(encoding_blob, dtype=np.float32)
+                
+                # Calculate Euclidean distance (L2 norm)
+                distance = np.linalg.norm(request_encoding - known_encoding)
+                
+                if distance < min_distance:
+                    min_distance = distance
+                    best_match_id = person_id
+                    best_match_name = name
+
+            if best_match_id:
+                response.person_data.is_known = True
+                response.person_data.person_id = best_match_id
+                response.person_data.name = best_match_name
+                self.get_logger().info(f"Found match: {best_match_name} with distance {min_distance}")
+
+        except Exception as e:
+            self.get_logger().error(f"Error during person lookup: {e}")
+            
         return response
 
     def register_person_callback(self, request, response):

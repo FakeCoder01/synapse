@@ -17,6 +17,12 @@ class InteractionManagerNode(Node):
             self.detected_people_callback,
             10)
         
+        self.audio_transcription_subscription = self.create_subscription(
+            String,
+            '/robot/audio_transcription',
+            self.audio_transcription_callback,
+            10)
+        
         self.get_conversation_client = self.create_client(GetConversation, '/get_conversation')
         self.store_conversation_client = self.create_client(StoreConversation, '/store_conversation')
         
@@ -39,6 +45,25 @@ class InteractionManagerNode(Node):
                 self.greet_known_person(largest_person)
             else:
                 self.greet_unknown_person(largest_person)
+
+    def audio_transcription_callback(self, msg):
+        """Handles transcribed speech from the user."""
+        input_text = msg.data
+        self.get_logger().info(f'Heard: "{input_text}"')
+        # Here you would typically get the person_id of the speaker
+        # For now, we'll assume it's the last person we greeted or a default
+        person_id = "person_1" 
+
+        # Save the user's speech to memory
+        self.save_line(person_id, "person", input_text)
+
+        # Get conversation history and call the LLM stub for a response
+        # In a real scenario, you'd get the history before calling the LLM
+        response_text = self.call_llm_api([], input_text)
+        
+        # Speak the response
+        self.publish_speech(response_text)
+        self.save_line(person_id, "robot", response_text)
 
     def greet_known_person(self, person):
         req = GetConversation.Request()
@@ -83,11 +108,32 @@ class InteractionManagerNode(Node):
         self.store_conversation_client.call_async(req)
 
     def call_llm_api(self, history, new_line):
-        # This is a stub for the user to replace with their own LLM API call
-        # import requests
-        # response = requests.post("https://api.llm.com/chat", json={"history": history, "new_line": new_line})
-        # return response.json()["text"]
-        return f"That's interesting. Can you tell me more?"
+        """
+        This is a functional, rule-based replacement for a real LLM API call.
+        It provides simple, interactive responses based on keywords.
+        """
+        new_line = new_line.lower()
+        if "hello" in new_line or "hi" in new_line:
+            return "Hello there! What can I do for you?"
+        elif "your name" in new_line:
+            return "I am a friendly AI pet robot."
+        elif "how are you" in new_line:
+            return "I am running on all cylinders! Thanks for asking."
+        elif "follow me" in new_line:
+            # This is an example of how you could trigger other robot actions.
+            # In a real implementation, you'd publish to a topic here.
+            return "I can't follow you yet, but that feature is coming soon!"
+        elif "what can you do" in new_line:
+            return "I can recognize faces, remember our conversations, and navigate around. Ask me to do something!"
+        else:
+            responses = [
+                "That's very interesting.",
+                "Tell me more about that.",
+                "I see. What else is on your mind?",
+                "Fascinating. Please continue."
+            ]
+            # Return a different response each time
+            return responses[datetime.datetime.now().second % len(responses)]
 
 
 def main(args=None):
