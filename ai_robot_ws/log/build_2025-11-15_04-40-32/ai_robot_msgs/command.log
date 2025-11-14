@@ -1,0 +1,6 @@
+Invoking command in '/home/sex/Synapse/ai_robot_ws/build/ai_robot_msgs': /usr/bin/cmake /home/sex/Synapse/ai_robot_ws/src/ai_robot_msgs -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs
+Invoked command in '/home/sex/Synapse/ai_robot_ws/build/ai_robot_msgs' returned '0': /usr/bin/cmake /home/sex/Synapse/ai_robot_ws/src/ai_robot_msgs -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs
+Invoking command in '/home/sex/Synapse/ai_robot_ws/build/ai_robot_msgs': /usr/bin/cmake --build /home/sex/Synapse/ai_robot_ws/build/ai_robot_msgs -- -j4 -l4
+Invoked command in '/home/sex/Synapse/ai_robot_ws/build/ai_robot_msgs' returned '0': /usr/bin/cmake --build /home/sex/Synapse/ai_robot_ws/build/ai_robot_msgs -- -j4 -l4
+Invoking command in '/home/sex/Synapse/ai_robot_ws/build/ai_robot_msgs': /usr/bin/cmake --install /home/sex/Synapse/ai_robot_ws/build/ai_robot_msgs
+Invoked command in '/home/sex/Synapse/ai_robot_ws/build/ai_robot_msgs' returned '0': /usr/bin/cmake --install /home/sex/Synapse/ai_robot_ws/build/ai_robot_msgs

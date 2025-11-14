@@ -1,0 +1,727 @@
+[0.000000] (-) TimerEvent: {}
+[0.000518] (ai_robot_hardware_drivers) JobQueued: {'identifier': 'ai_robot_hardware_drivers', 'dependencies': OrderedDict()}
+[0.000943] (ai_robot_msgs) JobQueued: {'identifier': 'ai_robot_msgs', 'dependencies': OrderedDict()}
+[0.000984] (ai_robot_core) JobQueued: {'identifier': 'ai_robot_core', 'dependencies': OrderedDict([('ai_robot_msgs', '/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs')])}
+[0.001045] (ai_robot_msgs) JobStarted: {'identifier': 'ai_robot_msgs'}
+[0.011533] (ai_robot_hardware_drivers) JobStarted: {'identifier': 'ai_robot_hardware_drivers'}
+[0.021570] (ai_robot_msgs) JobProgress: {'identifier': 'ai_robot_msgs', 'progress': 'cmake'}
+[0.022539] (ai_robot_msgs) Command: {'cmd': ['/usr/bin/cmake', '/home/sex/Synapse/ai_robot_ws/src/ai_robot_msgs', '-DCATKIN_INSTALL_INTO_PREFIX_ROOT=0', '-DCMAKE_INSTALL_PREFIX=/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs'], 'cwd': '/home/sex/Synapse/ai_robot_ws/build/ai_robot_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IN:'), ('USER', 'sex'), ('LC_TIME', 'ru_RU.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/sex'), ('OLDPWD', '/home/sex/Synapse'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'ru_RU.UTF-8'), ('SYSTEMD_EXEC_PID', '16461'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'sex'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'sex'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/sex/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/ubuntu2204:@/tmp/.ICE-unix/1575,unix/ubuntu2204:/tmp/.ICE-unix/1575'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'ru_RU.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/9224dd01_be7d_4035_aacb_34da68ca37d0'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'ru_RU.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.231'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ru_RU.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('GOOGLE_CLOUD_PROJECT', 'synpase'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ru_RU.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'ru_RU.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/sex/Synapse/ai_robot_ws/build/ai_robot_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ru_RU.UTF-8'), ('LC_PAPER', 'ru_RU.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800')]), 'shell': False}
+[0.099773] (-) TimerEvent: {}
+[0.200259] (-) TimerEvent: {}
+[0.300799] (-) TimerEvent: {}
+[0.401481] (-) TimerEvent: {}
+[0.477603] (ai_robot_msgs) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.501631] (-) TimerEvent: {}
+[0.588071] (ai_robot_msgs) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.601750] (-) TimerEvent: {}
+[0.673551] (ai_robot_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.701894] (-) TimerEvent: {}
+[0.802328] (-) TimerEvent: {}
+[0.818732] (ai_robot_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.826258] (ai_robot_msgs) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.827873] (ai_robot_msgs) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.829921] (ai_robot_msgs) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.840333] (ai_robot_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.902468] (-) TimerEvent: {}
+[0.979750] (ai_robot_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.990263] (ai_robot_msgs) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.990629] (ai_robot_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.991310] (ai_robot_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[1.002596] (-) TimerEvent: {}
+[1.025586] (ai_robot_msgs) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[1.088994] (ai_robot_hardware_drivers) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/ai_robot_hardware_drivers', 'build', '--build-base', '/home/sex/Synapse/ai_robot_ws/build/ai_robot_hardware_drivers/build', 'install', '--record', '/home/sex/Synapse/ai_robot_ws/build/ai_robot_hardware_drivers/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/sex/Synapse/ai_robot_ws/src/ai_robot_hardware_drivers', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'LANGUAGE': 'en_IN:', 'USER': 'sex', 'LC_TIME': 'ru_RU.UTF-8', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/home/sex', 'OLDPWD': '/home/sex/Synapse', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'ru_RU.UTF-8', 'SYSTEMD_EXEC_PID': '16461', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'ROS_DISTRO': 'humble', 'GTK_IM_MODULE': 'ibus', 'LOGNAME': 'sex', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'sex', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'PATH': '/opt/ros/humble/bin:/home/sex/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/ubuntu2204:@/tmp/.ICE-unix/1575,unix/ubuntu2204:/tmp/.ICE-unix/1575', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'ru_RU.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/9224dd01_be7d_4035_aacb_34da68ca37d0', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'ru_RU.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'GNOME_TERMINAL_SERVICE': ':1.231', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'SHELL': '/bin/bash', 'LC_NAME': 'ru_RU.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'GOOGLE_CLOUD_PROJECT': 'synpase', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'ru_RU.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'ru_RU.UTF-8', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/sex/Synapse/ai_robot_ws/build/ai_robot_hardware_drivers', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/sex/Synapse/ai_robot_ws/build/ai_robot_hardware_drivers/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'LC_NUMERIC': 'ru_RU.UTF-8', 'LC_PAPER': 'ru_RU.UTF-8', 'COLCON': '1', 'VTE_VERSION': '6800'}, 'shell': False}
+[1.102756] (-) TimerEvent: {}
+[1.203431] (-) TimerEvent: {}
+[1.288364] (ai_robot_msgs) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[1.303609] (-) TimerEvent: {}
+[1.404165] (-) TimerEvent: {}
+[1.415602] (ai_robot_hardware_drivers) StdoutLine: {'line': b'running egg_info\n'}
+[1.417039] (ai_robot_hardware_drivers) StdoutLine: {'line': b'creating ../../build/ai_robot_hardware_drivers/ai_robot_hardware_drivers.egg-info\n'}
+[1.417478] (ai_robot_hardware_drivers) StdoutLine: {'line': b'writing ../../build/ai_robot_hardware_drivers/ai_robot_hardware_drivers.egg-info/PKG-INFO\n'}
+[1.418112] (ai_robot_hardware_drivers) StdoutLine: {'line': b'writing dependency_links to ../../build/ai_robot_hardware_drivers/ai_robot_hardware_drivers.egg-info/dependency_links.txt\n'}
+[1.418687] (ai_robot_hardware_drivers) StdoutLine: {'line': b'writing entry points to ../../build/ai_robot_hardware_drivers/ai_robot_hardware_drivers.egg-info/entry_points.txt\n'}
+[1.418837] (ai_robot_hardware_drivers) StdoutLine: {'line': b'writing requirements to ../../build/ai_robot_hardware_drivers/ai_robot_hardware_drivers.egg-info/requires.txt\n'}
+[1.419119] (ai_robot_hardware_drivers) StdoutLine: {'line': b'writing top-level names to ../../build/ai_robot_hardware_drivers/ai_robot_hardware_drivers.egg-info/top_level.txt\n'}
+[1.419336] (ai_robot_hardware_drivers) StdoutLine: {'line': b"writing manifest file '../../build/ai_robot_hardware_drivers/ai_robot_hardware_drivers.egg-info/SOURCES.txt'\n"}
+[1.421178] (ai_robot_hardware_drivers) StdoutLine: {'line': b"reading manifest file '../../build/ai_robot_hardware_drivers/ai_robot_hardware_drivers.egg-info/SOURCES.txt'\n"}
+[1.422346] (ai_robot_hardware_drivers) StdoutLine: {'line': b"writing manifest file '../../build/ai_robot_hardware_drivers/ai_robot_hardware_drivers.egg-info/SOURCES.txt'\n"}
+[1.422580] (ai_robot_hardware_drivers) StdoutLine: {'line': b'running build\n'}
+[1.422704] (ai_robot_hardware_drivers) StdoutLine: {'line': b'running build_py\n'}
+[1.422919] (ai_robot_hardware_drivers) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/build/ai_robot_hardware_drivers/build\n'}
+[1.423178] (ai_robot_hardware_drivers) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/build/ai_robot_hardware_drivers/build/lib\n'}
+[1.423357] (ai_robot_hardware_drivers) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/build/ai_robot_hardware_drivers/build/lib/ai_robot_hardware_drivers\n'}
+[1.423478] (ai_robot_hardware_drivers) StdoutLine: {'line': b'copying ai_robot_hardware_drivers/esp8266_bridge_node.py -> /home/sex/Synapse/ai_robot_ws/build/ai_robot_hardware_drivers/build/lib/ai_robot_hardware_drivers\n'}
+[1.423705] (ai_robot_hardware_drivers) StdoutLine: {'line': b'copying ai_robot_hardware_drivers/kinect_interface_node.py -> /home/sex/Synapse/ai_robot_ws/build/ai_robot_hardware_drivers/build/lib/ai_robot_hardware_drivers\n'}
+[1.424001] (ai_robot_hardware_drivers) StdoutLine: {'line': b'copying ai_robot_hardware_drivers/audio_interface_node.py -> /home/sex/Synapse/ai_robot_ws/build/ai_robot_hardware_drivers/build/lib/ai_robot_hardware_drivers\n'}
+[1.424202] (ai_robot_hardware_drivers) StdoutLine: {'line': b'copying ai_robot_hardware_drivers/__init__.py -> /home/sex/Synapse/ai_robot_ws/build/ai_robot_hardware_drivers/build/lib/ai_robot_hardware_drivers\n'}
+[1.424382] (ai_robot_hardware_drivers) StdoutLine: {'line': b'copying ai_robot_hardware_drivers/ir_sensor_node.py -> /home/sex/Synapse/ai_robot_ws/build/ai_robot_hardware_drivers/build/lib/ai_robot_hardware_drivers\n'}
+[1.424787] (ai_robot_hardware_drivers) StdoutLine: {'line': b'running install\n'}
+[1.425514] (ai_robot_hardware_drivers) StdoutLine: {'line': b'running install_lib\n'}
+[1.427078] (ai_robot_hardware_drivers) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/lib/python3.10/site-packages/ai_robot_hardware_drivers\n'}
+[1.427426] (ai_robot_hardware_drivers) StdoutLine: {'line': b'copying /home/sex/Synapse/ai_robot_ws/build/ai_robot_hardware_drivers/build/lib/ai_robot_hardware_drivers/esp8266_bridge_node.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/lib/python3.10/site-packages/ai_robot_hardware_drivers\n'}
+[1.427574] (ai_robot_hardware_drivers) StdoutLine: {'line': b'copying /home/sex/Synapse/ai_robot_ws/build/ai_robot_hardware_drivers/build/lib/ai_robot_hardware_drivers/kinect_interface_node.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/lib/python3.10/site-packages/ai_robot_hardware_drivers\n'}
+[1.427675] (ai_robot_hardware_drivers) StdoutLine: {'line': b'copying /home/sex/Synapse/ai_robot_ws/build/ai_robot_hardware_drivers/build/lib/ai_robot_hardware_drivers/audio_interface_node.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/lib/python3.10/site-packages/ai_robot_hardware_drivers\n'}
+[1.427924] (ai_robot_hardware_drivers) StdoutLine: {'line': b'copying /home/sex/Synapse/ai_robot_ws/build/ai_robot_hardware_drivers/build/lib/ai_robot_hardware_drivers/__init__.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/lib/python3.10/site-packages/ai_robot_hardware_drivers\n'}
+[1.428093] (ai_robot_hardware_drivers) StdoutLine: {'line': b'copying /home/sex/Synapse/ai_robot_ws/build/ai_robot_hardware_drivers/build/lib/ai_robot_hardware_drivers/ir_sensor_node.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/lib/python3.10/site-packages/ai_robot_hardware_drivers\n'}
+[1.428532] (ai_robot_hardware_drivers) StdoutLine: {'line': b'byte-compiling /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/lib/python3.10/site-packages/ai_robot_hardware_drivers/esp8266_bridge_node.py to esp8266_bridge_node.cpython-310.pyc\n'}
+[1.432317] (ai_robot_hardware_drivers) StdoutLine: {'line': b'byte-compiling /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/lib/python3.10/site-packages/ai_robot_hardware_drivers/kinect_interface_node.py to kinect_interface_node.cpython-310.pyc\n'}
+[1.433956] (ai_robot_hardware_drivers) StdoutLine: {'line': b'byte-compiling /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/lib/python3.10/site-packages/ai_robot_hardware_drivers/audio_interface_node.py to audio_interface_node.cpython-310.pyc\n'}
+[1.437979] (ai_robot_hardware_drivers) StdoutLine: {'line': b'byte-compiling /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/lib/python3.10/site-packages/ai_robot_hardware_drivers/__init__.py to __init__.cpython-310.pyc\n'}
+[1.438351] (ai_robot_hardware_drivers) StdoutLine: {'line': b'byte-compiling /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/lib/python3.10/site-packages/ai_robot_hardware_drivers/ir_sensor_node.py to ir_sensor_node.cpython-310.pyc\n'}
+[1.438467] (ai_robot_hardware_drivers) StdoutLine: {'line': b'running install_data\n'}
+[1.438551] (ai_robot_hardware_drivers) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/share/ament_index\n'}
+[1.438634] (ai_robot_hardware_drivers) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/share/ament_index/resource_index\n'}
+[1.438745] (ai_robot_hardware_drivers) StderrLine: {'line': b'  File "/home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/lib/python3.10/site-packages/ai_robot_hardware_drivers/ir_sensor_node.py", line 109\n'}
+[1.439034] (ai_robot_hardware_drivers) StderrLine: {'line': b'    left_\n'}
+[1.439169] (ai_robot_hardware_drivers) StderrLine: {'line': b'         ^\n'}
+[1.439671] (ai_robot_hardware_drivers) StderrLine: {'line': b"SyntaxError: expected 'except' or 'finally' block\n"}
+[1.439832] (ai_robot_hardware_drivers) StderrLine: {'line': b'\n'}
+[1.439946] (ai_robot_hardware_drivers) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/share/ament_index/resource_index/packages\n'}
+[1.440072] (ai_robot_hardware_drivers) StdoutLine: {'line': b'copying resource/ai_robot_hardware_drivers -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/share/ament_index/resource_index/packages\n'}
+[1.440566] (ai_robot_hardware_drivers) StdoutLine: {'line': b'copying package.xml -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/share/ai_robot_hardware_drivers\n'}
+[1.440832] (ai_robot_hardware_drivers) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/share/ai_robot_hardware_drivers/launch\n'}
+[1.441209] (ai_robot_hardware_drivers) StdoutLine: {'line': b'copying launch/hardware_bringup.launch.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/share/ai_robot_hardware_drivers/launch\n'}
+[1.441375] (ai_robot_hardware_drivers) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/share/ai_robot_hardware_drivers/config\n'}
+[1.441579] (ai_robot_hardware_drivers) StdoutLine: {'line': b'copying config/hardware_params.yaml -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/share/ai_robot_hardware_drivers/config\n'}
+[1.441763] (ai_robot_hardware_drivers) StdoutLine: {'line': b'running install_egg_info\n'}
+[1.444802] (ai_robot_hardware_drivers) StdoutLine: {'line': b'Copying ../../build/ai_robot_hardware_drivers/ai_robot_hardware_drivers.egg-info to /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/lib/python3.10/site-packages/ai_robot_hardware_drivers-1.0.0-py3.10.egg-info\n'}
+[1.446466] (ai_robot_hardware_drivers) StdoutLine: {'line': b'running install_scripts\n'}
+[1.476160] (ai_robot_hardware_drivers) StdoutLine: {'line': b'Installing audio_interface_node script to /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/lib/ai_robot_hardware_drivers\n'}
+[1.476486] (ai_robot_hardware_drivers) StdoutLine: {'line': b'Installing esp8266_bridge_node script to /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/lib/ai_robot_hardware_drivers\n'}
+[1.476641] (ai_robot_hardware_drivers) StdoutLine: {'line': b'Installing ir_sensor_node script to /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/lib/ai_robot_hardware_drivers\n'}
+[1.476800] (ai_robot_hardware_drivers) StdoutLine: {'line': b'Installing kinect_interface_node script to /home/sex/Synapse/ai_robot_ws/install/ai_robot_hardware_drivers/lib/ai_robot_hardware_drivers\n'}
+[1.477198] (ai_robot_hardware_drivers) StdoutLine: {'line': b"writing list of installed files to '/home/sex/Synapse/ai_robot_ws/build/ai_robot_hardware_drivers/install.log'\n"}
+[1.504343] (-) TimerEvent: {}
+[1.513271] (ai_robot_hardware_drivers) CommandEnded: {'returncode': 0}
+[1.538445] (ai_robot_hardware_drivers) JobEnded: {'identifier': 'ai_robot_hardware_drivers', 'rc': 0}
+[1.602080] (ai_robot_msgs) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[1.604475] (-) TimerEvent: {}
+[1.617040] (ai_robot_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.661413] (ai_robot_msgs) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[1.704626] (-) TimerEvent: {}
+[1.805107] (-) TimerEvent: {}
+[1.807756] (ai_robot_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.905313] (-) TimerEvent: {}
+[1.911381] (ai_robot_msgs) StdoutLine: {'line': b'-- Found std_msgs: 4.9.0 (/opt/ros/humble/share/std_msgs/cmake)\n'}
+[2.005571] (-) TimerEvent: {}
+[2.038817] (ai_robot_msgs) StdoutLine: {'line': b'-- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[2.105757] (-) TimerEvent: {}
+[2.206149] (-) TimerEvent: {}
+[2.306622] (-) TimerEvent: {}
+[2.407087] (-) TimerEvent: {}
+[2.503292] (ai_robot_msgs) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)\n'}
+[2.507245] (-) TimerEvent: {}
+[2.607611] (-) TimerEvent: {}
+[2.708045] (-) TimerEvent: {}
+[2.790731] (ai_robot_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[2.808218] (-) TimerEvent: {}
+[2.908657] (-) TimerEvent: {}
+[3.009165] (-) TimerEvent: {}
+[3.109599] (-) TimerEvent: {}
+[3.156270] (ai_robot_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[3.195267] (ai_robot_msgs) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") \n'}
+[3.198509] (ai_robot_msgs) StdoutLine: {'line': b'-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)\n'}
+[3.209785] (-) TimerEvent: {}
+[3.245553] (ai_robot_msgs) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") \n'}
+[3.245956] (ai_robot_msgs) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[3.246126] (ai_robot_msgs) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10\n'}
+[3.246269] (ai_robot_msgs) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so\n'}
+[3.270982] (ai_robot_msgs) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[3.309918] (-) TimerEvent: {}
+[3.400992] (ai_robot_msgs) StdoutLine: {'line': b'-- Configuring done\n'}
+[3.410094] (-) TimerEvent: {}
+[3.463386] (ai_robot_msgs) StdoutLine: {'line': b'-- Generating done\n'}
+[3.466407] (ai_robot_msgs) StderrLine: {'line': b'\x1b[33mCMake Warning:\n'}
+[3.466665] (ai_robot_msgs) StderrLine: {'line': b'  Manually-specified variables were not used by the project:\n'}
+[3.466774] (ai_robot_msgs) StderrLine: {'line': b'\n'}
+[3.466861] (ai_robot_msgs) StderrLine: {'line': b'    CATKIN_INSTALL_INTO_PREFIX_ROOT\n'}
+[3.466947] (ai_robot_msgs) StderrLine: {'line': b'\n'}
+[3.467043] (ai_robot_msgs) StderrLine: {'line': b'\x1b[0m\n'}
+[3.482354] (ai_robot_msgs) StdoutLine: {'line': b'-- Build files have been written to: /home/sex/Synapse/ai_robot_ws/build/ai_robot_msgs\n'}
+[3.489429] (ai_robot_msgs) CommandEnded: {'returncode': 0}
+[3.490102] (ai_robot_msgs) JobProgress: {'identifier': 'ai_robot_msgs', 'progress': 'build'}
+[3.491625] (ai_robot_msgs) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/sex/Synapse/ai_robot_ws/build/ai_robot_msgs', '--', '-j4', '-l4'], 'cwd': '/home/sex/Synapse/ai_robot_ws/build/ai_robot_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IN:'), ('USER', 'sex'), ('LC_TIME', 'ru_RU.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/sex'), ('OLDPWD', '/home/sex/Synapse'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'ru_RU.UTF-8'), ('SYSTEMD_EXEC_PID', '16461'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'sex'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'sex'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/sex/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/ubuntu2204:@/tmp/.ICE-unix/1575,unix/ubuntu2204:/tmp/.ICE-unix/1575'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'ru_RU.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/9224dd01_be7d_4035_aacb_34da68ca37d0'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'ru_RU.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.231'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ru_RU.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('GOOGLE_CLOUD_PROJECT', 'synpase'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ru_RU.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'ru_RU.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/sex/Synapse/ai_robot_ws/build/ai_robot_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ru_RU.UTF-8'), ('LC_PAPER', 'ru_RU.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800')]), 'shell': False}
+[3.510255] (-) TimerEvent: {}
+[3.536857] (ai_robot_msgs) StdoutLine: {'line': b'[  1%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[3.557712] (ai_robot_msgs) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[3.566162] (ai_robot_msgs) StdoutLine: {'line': b'[  2%] Built target ament_cmake_python_copy_ai_robot_msgs\n'}
+[3.610418] (-) TimerEvent: {}
+[3.713119] (-) TimerEvent: {}
+[3.813766] (-) TimerEvent: {}
+[3.914487] (-) TimerEvent: {}
+[4.003954] (ai_robot_msgs) StdoutLine: {'line': b'running egg_info\n'}
+[4.005394] (ai_robot_msgs) StdoutLine: {'line': b'creating ai_robot_msgs.egg-info\n'}
+[4.005802] (ai_robot_msgs) StdoutLine: {'line': b'writing ai_robot_msgs.egg-info/PKG-INFO\n'}
+[4.006285] (ai_robot_msgs) StdoutLine: {'line': b'writing dependency_links to ai_robot_msgs.egg-info/dependency_links.txt\n'}
+[4.006604] (ai_robot_msgs) StdoutLine: {'line': b'writing top-level names to ai_robot_msgs.egg-info/top_level.txt\n'}
+[4.007173] (ai_robot_msgs) StdoutLine: {'line': b"writing manifest file 'ai_robot_msgs.egg-info/SOURCES.txt'\n"}
+[4.011109] (ai_robot_msgs) StdoutLine: {'line': b"reading manifest file 'ai_robot_msgs.egg-info/SOURCES.txt'\n"}
+[4.012116] (ai_robot_msgs) StdoutLine: {'line': b"writing manifest file 'ai_robot_msgs.egg-info/SOURCES.txt'\n"}
+[4.014642] (-) TimerEvent: {}
+[4.064985] (ai_robot_msgs) StdoutLine: {'line': b'[  2%] Built target ament_cmake_python_build_ai_robot_msgs_egg\n'}
+[4.114835] (-) TimerEvent: {}
+[4.215409] (-) TimerEvent: {}
+[4.315813] (-) TimerEvent: {}
+[4.416404] (-) TimerEvent: {}
+[4.518397] (-) TimerEvent: {}
+[4.618804] (-) TimerEvent: {}
+[4.662285] (ai_robot_msgs) StdoutLine: {'line': b'[  4%] \x1b[32mBuilding C object CMakeFiles/ai_robot_msgs__rosidl_generator_c.dir/rosidl_generator_c/ai_robot_msgs/msg/detail/person__functions.c.o\x1b[0m\n'}
+[4.662664] (ai_robot_msgs) StdoutLine: {'line': b'[  5%] \x1b[32mBuilding C object CMakeFiles/ai_robot_msgs__rosidl_generator_c.dir/rosidl_generator_c/ai_robot_msgs/msg/detail/person_array__functions.c.o\x1b[0m\n'}
+[4.674402] (ai_robot_msgs) StdoutLine: {'line': b'[  7%] \x1b[32mBuilding C object CMakeFiles/ai_robot_msgs__rosidl_generator_c.dir/rosidl_generator_c/ai_robot_msgs/srv/detail/get_conversation__functions.c.o\x1b[0m\n'}
+[4.719515] (-) TimerEvent: {}
+[4.781125] (ai_robot_msgs) StdoutLine: {'line': b'[  8%] \x1b[32mBuilding C object CMakeFiles/ai_robot_msgs__rosidl_generator_c.dir/rosidl_generator_c/ai_robot_msgs/srv/detail/lookup_person__functions.c.o\x1b[0m\n'}
+[4.795430] (ai_robot_msgs) StdoutLine: {'line': b'[  9%] \x1b[32mBuilding C object CMakeFiles/ai_robot_msgs__rosidl_generator_c.dir/rosidl_generator_c/ai_robot_msgs/srv/detail/register_person__functions.c.o\x1b[0m\n'}
+[4.801407] (ai_robot_msgs) StdoutLine: {'line': b'[ 11%] \x1b[32mBuilding C object CMakeFiles/ai_robot_msgs__rosidl_generator_c.dir/rosidl_generator_c/ai_robot_msgs/srv/detail/store_conversation__functions.c.o\x1b[0m\n'}
+[4.819987] (-) TimerEvent: {}
+[4.920788] (ai_robot_msgs) StdoutLine: {'line': b'[ 12%] \x1b[32m\x1b[1mLinking C shared library libai_robot_msgs__rosidl_generator_c.so\x1b[0m\n'}
+[4.921301] (-) TimerEvent: {}
+[4.951101] (ai_robot_msgs) StdoutLine: {'line': b'[ 12%] Built target ai_robot_msgs__cpp\n'}
+[4.973259] (ai_robot_msgs) StdoutLine: {'line': b'[ 14%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[4.976293] (ai_robot_msgs) StdoutLine: {'line': b'[ 15%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[5.006081] (ai_robot_msgs) StdoutLine: {'line': b'[ 16%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[5.014878] (ai_robot_msgs) StdoutLine: {'line': b'[ 16%] Built target ai_robot_msgs__rosidl_generator_c\n'}
+[5.023290] (-) TimerEvent: {}
+[5.036347] (ai_robot_msgs) StdoutLine: {'line': b'[ 18%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[5.126285] (-) TimerEvent: {}
+[5.226802] (-) TimerEvent: {}
+[5.335656] (-) TimerEvent: {}
+[5.437096] (-) TimerEvent: {}
+[5.537688] (-) TimerEvent: {}
+[5.638091] (-) TimerEvent: {}
+[5.738538] (-) TimerEvent: {}
+[5.840335] (-) TimerEvent: {}
+[5.942263] (-) TimerEvent: {}
+[6.042662] (-) TimerEvent: {}
+[6.123323] (ai_robot_msgs) StdoutLine: {'line': b'[ 19%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ai_robot_msgs/msg/person__type_support.cpp.o\x1b[0m\n'}
+[6.144252] (-) TimerEvent: {}
+[6.244808] (-) TimerEvent: {}
+[6.345466] (-) TimerEvent: {}
+[6.445956] (-) TimerEvent: {}
+[6.459455] (ai_robot_msgs) StdoutLine: {'line': b'[ 21%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ai_robot_msgs/msg/detail/person__type_support.cpp.o\x1b[0m\n'}
+[6.546104] (-) TimerEvent: {}
+[6.629329] (ai_robot_msgs) StdoutLine: {'line': b'[ 22%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ai_robot_msgs/msg/detail/dds_fastrtps/person__type_support.cpp.o\x1b[0m\n'}
+[6.647395] (-) TimerEvent: {}
+[6.723480] (ai_robot_msgs) StdoutLine: {'line': b'[ 23%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ai_robot_msgs/msg/detail/person__type_support_c.cpp.o\x1b[0m\n'}
+[6.747533] (-) TimerEvent: {}
+[6.771146] (ai_robot_msgs) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ai_robot_msgs/msg/person_array__type_support.cpp.o\x1b[0m\n'}
+[6.848083] (-) TimerEvent: {}
+[6.951685] (-) TimerEvent: {}
+[7.052287] (-) TimerEvent: {}
+[7.152899] (-) TimerEvent: {}
+[7.253414] (-) TimerEvent: {}
+[7.353932] (-) TimerEvent: {}
+[7.397581] (ai_robot_msgs) StdoutLine: {'line': b'[ 26%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ai_robot_msgs/srv/get_conversation__type_support.cpp.o\x1b[0m\n'}
+[7.455257] (-) TimerEvent: {}
+[7.558686] (-) TimerEvent: {}
+[7.594319] (ai_robot_msgs) StdoutLine: {'line': b'[ 28%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ai_robot_msgs/msg/detail/person_array__type_support_c.cpp.o\x1b[0m\n'}
+[7.638689] (ai_robot_msgs) StdoutLine: {'line': b'[ 29%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ai_robot_msgs/msg/detail/person_array__type_support.cpp.o\x1b[0m\n'}
+[7.658819] (-) TimerEvent: {}
+[7.759733] (-) TimerEvent: {}
+[7.861485] (-) TimerEvent: {}
+[7.872694] (ai_robot_msgs) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ai_robot_msgs/msg/detail/dds_fastrtps/person_array__type_support.cpp.o\x1b[0m\n'}
+[7.961626] (-) TimerEvent: {}
+[8.026178] (ai_robot_msgs) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ai_robot_msgs/srv/lookup_person__type_support.cpp.o\x1b[0m\n'}
+[8.061761] (-) TimerEvent: {}
+[8.162473] (-) TimerEvent: {}
+[8.262952] (-) TimerEvent: {}
+[8.304534] (ai_robot_msgs) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ai_robot_msgs/srv/detail/get_conversation__type_support_c.cpp.o\x1b[0m\n'}
+[8.363098] (-) TimerEvent: {}
+[8.463733] (-) TimerEvent: {}
+[8.564505] (-) TimerEvent: {}
+[8.635177] (ai_robot_msgs) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ai_robot_msgs/srv/register_person__type_support.cpp.o\x1b[0m\n'}
+[8.664642] (-) TimerEvent: {}
+[8.765166] (-) TimerEvent: {}
+[8.773382] (ai_robot_msgs) StdoutLine: {'line': b'[ 36%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ai_robot_msgs/srv/detail/get_conversation__type_support.cpp.o\x1b[0m\n'}
+[8.865312] (-) TimerEvent: {}
+[8.874503] (ai_robot_msgs) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ai_robot_msgs/srv/detail/dds_fastrtps/get_conversation__type_support.cpp.o\x1b[0m\n'}
+[8.965446] (-) TimerEvent: {}
+[9.067555] (-) TimerEvent: {}
+[9.118212] (ai_robot_msgs) StdoutLine: {'line': b'[ 39%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ai_robot_msgs/srv/detail/lookup_person__type_support_c.cpp.o\x1b[0m\n'}
+[9.161332] (ai_robot_msgs) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ai_robot_msgs/srv/store_conversation__type_support.cpp.o\x1b[0m\n'}
+[9.167689] (-) TimerEvent: {}
+[9.269484] (-) TimerEvent: {}
+[9.371509] (-) TimerEvent: {}
+[9.472110] (-) TimerEvent: {}
+[9.572647] (-) TimerEvent: {}
+[9.676518] (-) TimerEvent: {}
+[9.688065] (ai_robot_msgs) StdoutLine: {'line': b'[ 42%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ai_robot_msgs/srv/detail/lookup_person__type_support.cpp.o\x1b[0m\n'}
+[9.762938] (ai_robot_msgs) StdoutLine: {'line': b'[ 43%] \x1b[32m\x1b[1mLinking CXX shared library libai_robot_msgs__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[9.776666] (-) TimerEvent: {}
+[9.799259] (ai_robot_msgs) StdoutLine: {'line': b'[ 45%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ai_robot_msgs/srv/detail/register_person__type_support_c.cpp.o\x1b[0m\n'}
+[9.809326] (ai_robot_msgs) StdoutLine: {'line': b'[ 46%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ai_robot_msgs/srv/detail/dds_fastrtps/lookup_person__type_support.cpp.o\x1b[0m\n'}
+[9.855488] (ai_robot_msgs) StdoutLine: {'line': b'[ 46%] Built target ai_robot_msgs__rosidl_typesupport_cpp\n'}
+[9.869134] (ai_robot_msgs) StdoutLine: {'line': b'[ 47%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ai_robot_msgs/srv/detail/register_person__type_support.cpp.o\x1b[0m\n'}
+[9.876821] (-) TimerEvent: {}
+[9.979444] (-) TimerEvent: {}
+[10.080110] (-) TimerEvent: {}
+[10.180772] (-) TimerEvent: {}
+[10.281353] (-) TimerEvent: {}
+[10.382106] (-) TimerEvent: {}
+[10.484439] (-) TimerEvent: {}
+[10.527386] (ai_robot_msgs) StdoutLine: {'line': b'[ 49%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ai_robot_msgs/srv/detail/store_conversation__type_support_c.cpp.o\x1b[0m\n'}
+[10.584572] (-) TimerEvent: {}
+[10.605315] (ai_robot_msgs) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ai_robot_msgs/srv/detail/dds_fastrtps/register_person__type_support.cpp.o\x1b[0m\n'}
+[10.684699] (-) TimerEvent: {}
+[10.725553] (ai_robot_msgs) StdoutLine: {'line': b'[ 52%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ai_robot_msgs/srv/detail/store_conversation__type_support.cpp.o\x1b[0m\n'}
+[10.740456] (ai_robot_msgs) StdoutLine: {'line': b'[ 53%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ai_robot_msgs/srv/detail/dds_fastrtps/store_conversation__type_support.cpp.o\x1b[0m\n'}
+[10.784835] (-) TimerEvent: {}
+[10.885557] (-) TimerEvent: {}
+[10.986325] (-) TimerEvent: {}
+[11.088655] (-) TimerEvent: {}
+[11.189417] (-) TimerEvent: {}
+[11.254354] (ai_robot_msgs) StdoutLine: {'line': b'[ 54%] \x1b[32m\x1b[1mLinking CXX shared library libai_robot_msgs__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[11.289648] (-) TimerEvent: {}
+[11.390501] (-) TimerEvent: {}
+[11.493692] (ai_robot_msgs) StdoutLine: {'line': b'[ 54%] Built target ai_robot_msgs__rosidl_typesupport_fastrtps_c\n'}
+[11.494642] (-) TimerEvent: {}
+[11.514660] (ai_robot_msgs) StdoutLine: {'line': b'[ 56%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[11.570484] (ai_robot_msgs) StdoutLine: {'line': b'[ 57%] \x1b[32m\x1b[1mLinking CXX shared library libai_robot_msgs__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[11.596046] (-) TimerEvent: {}
+[11.665408] (ai_robot_msgs) StdoutLine: {'line': b'[ 59%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[11.696172] (-) TimerEvent: {}
+[11.703793] (ai_robot_msgs) StdoutLine: {'line': b'[ 60%] \x1b[32m\x1b[1mLinking CXX shared library libai_robot_msgs__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[11.778378] (ai_robot_msgs) StdoutLine: {'line': b'[ 60%] Built target ai_robot_msgs__rosidl_typesupport_introspection_cpp\n'}
+[11.796315] (-) TimerEvent: {}
+[11.897085] (-) TimerEvent: {}
+[11.902364] (ai_robot_msgs) StdoutLine: {'line': b'[ 60%] Built target ai_robot_msgs__rosidl_typesupport_fastrtps_cpp\n'}
+[11.997228] (-) TimerEvent: {}
+[12.097619] (-) TimerEvent: {}
+[12.198039] (-) TimerEvent: {}
+[12.298525] (-) TimerEvent: {}
+[12.392292] (ai_robot_msgs) StdoutLine: {'line': b'[ 63%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/ai_robot_msgs/msg/person__type_support.cpp.o\x1b[0m\n'}
+[12.392606] (ai_robot_msgs) StdoutLine: {'line': b'[ 63%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/ai_robot_msgs/msg/person_array__type_support.cpp.o\x1b[0m\n'}
+[12.398486] (ai_robot_msgs) StdoutLine: {'line': b'[ 64%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/ai_robot_msgs/srv/get_conversation__type_support.cpp.o\x1b[0m\n'}
+[12.398790] (-) TimerEvent: {}
+[12.457242] (ai_robot_msgs) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/ai_robot_msgs/srv/lookup_person__type_support.cpp.o\x1b[0m\n'}
+[12.459948] (ai_robot_msgs) StdoutLine: {'line': b'[ 67%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/ai_robot_msgs/srv/register_person__type_support.cpp.o\x1b[0m\n'}
+[12.469317] (ai_robot_msgs) StdoutLine: {'line': b'[ 69%] \x1b[32mBuilding CXX object CMakeFiles/ai_robot_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/ai_robot_msgs/srv/store_conversation__type_support.cpp.o\x1b[0m\n'}
+[12.498949] (-) TimerEvent: {}
+[12.525367] (ai_robot_msgs) StdoutLine: {'line': b'[ 70%] \x1b[32m\x1b[1mLinking CXX shared library libai_robot_msgs__rosidl_typesupport_c.so\x1b[0m\n'}
+[12.594381] (ai_robot_msgs) StdoutLine: {'line': b'[ 73%] \x1b[32mBuilding C object CMakeFiles/ai_robot_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ai_robot_msgs/msg/detail/person_array__type_support.c.o\x1b[0m\n'}
+[12.594669] (ai_robot_msgs) StdoutLine: {'line': b'[ 73%] \x1b[32mBuilding C object CMakeFiles/ai_robot_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ai_robot_msgs/srv/detail/get_conversation__type_support.c.o\x1b[0m\n'}
+[12.595614] (ai_robot_msgs) StdoutLine: {'line': b'[ 74%] \x1b[32mBuilding C object CMakeFiles/ai_robot_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ai_robot_msgs/msg/detail/person__type_support.c.o\x1b[0m\n'}
+[12.601457] (-) TimerEvent: {}
+[12.607376] (ai_robot_msgs) StdoutLine: {'line': b'[ 74%] Built target ai_robot_msgs__rosidl_typesupport_c\n'}
+[12.620798] (ai_robot_msgs) StdoutLine: {'line': b'[ 76%] \x1b[32mBuilding C object CMakeFiles/ai_robot_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ai_robot_msgs/srv/detail/lookup_person__type_support.c.o\x1b[0m\n'}
+[12.678877] (ai_robot_msgs) StdoutLine: {'line': b'[ 77%] \x1b[32mBuilding C object CMakeFiles/ai_robot_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ai_robot_msgs/srv/detail/register_person__type_support.c.o\x1b[0m\n'}
+[12.686018] (ai_robot_msgs) StdoutLine: {'line': b'[ 78%] \x1b[32mBuilding C object CMakeFiles/ai_robot_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ai_robot_msgs/srv/detail/store_conversation__type_support.c.o\x1b[0m\n'}
+[12.701655] (-) TimerEvent: {}
+[12.740972] (ai_robot_msgs) StdoutLine: {'line': b'[ 80%] \x1b[32m\x1b[1mLinking C shared library libai_robot_msgs__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[12.786005] (ai_robot_msgs) StdoutLine: {'line': b'[ 80%] Built target ai_robot_msgs__rosidl_typesupport_introspection_c\n'}
+[12.801783] (-) TimerEvent: {}
+[12.809220] (ai_robot_msgs) StdoutLine: {'line': b'[ 80%] Built target ai_robot_msgs\n'}
+[12.834342] (ai_robot_msgs) StdoutLine: {'line': b'[ 81%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[12.901932] (-) TimerEvent: {}
+[13.002381] (-) TimerEvent: {}
+[13.102893] (-) TimerEvent: {}
+[13.203317] (-) TimerEvent: {}
+[13.303737] (-) TimerEvent: {}
+[13.404102] (-) TimerEvent: {}
+[13.504523] (-) TimerEvent: {}
+[13.604925] (-) TimerEvent: {}
+[13.705649] (-) TimerEvent: {}
+[13.806168] (-) TimerEvent: {}
+[13.906633] (-) TimerEvent: {}
+[14.007152] (-) TimerEvent: {}
+[14.107678] (-) TimerEvent: {}
+[14.209677] (-) TimerEvent: {}
+[14.227479] (ai_robot_msgs) StdoutLine: {'line': b'[ 81%] Built target ai_robot_msgs__py\n'}
+[14.255427] (ai_robot_msgs) StdoutLine: {'line': b'[ 83%] \x1b[32mBuilding C object CMakeFiles/ai_robot_msgs__rosidl_generator_py.dir/rosidl_generator_py/ai_robot_msgs/msg/_person_s.c.o\x1b[0m\n'}
+[14.262306] (ai_robot_msgs) StdoutLine: {'line': b'[ 84%] \x1b[32mBuilding C object CMakeFiles/ai_robot_msgs__rosidl_generator_py.dir/rosidl_generator_py/ai_robot_msgs/srv/_get_conversation_s.c.o\x1b[0m\n'}
+[14.262670] (ai_robot_msgs) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding C object CMakeFiles/ai_robot_msgs__rosidl_generator_py.dir/rosidl_generator_py/ai_robot_msgs/msg/_person_array_s.c.o\x1b[0m\n'}
+[14.266999] (ai_robot_msgs) StdoutLine: {'line': b'[ 87%] \x1b[32mBuilding C object CMakeFiles/ai_robot_msgs__rosidl_generator_py.dir/rosidl_generator_py/ai_robot_msgs/srv/_lookup_person_s.c.o\x1b[0m\n'}
+[14.310019] (-) TimerEvent: {}
+[14.410973] (-) TimerEvent: {}
+[14.515303] (-) TimerEvent: {}
+[14.615741] (-) TimerEvent: {}
+[14.716238] (-) TimerEvent: {}
+[14.804725] (ai_robot_msgs) StdoutLine: {'line': b'[ 88%] \x1b[32mBuilding C object CMakeFiles/ai_robot_msgs__rosidl_generator_py.dir/rosidl_generator_py/ai_robot_msgs/srv/_store_conversation_s.c.o\x1b[0m\n'}
+[14.806444] (ai_robot_msgs) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/ai_robot_msgs__rosidl_generator_py.dir/rosidl_generator_py/ai_robot_msgs/srv/_register_person_s.c.o\x1b[0m\n'}
+[14.816327] (-) TimerEvent: {}
+[14.916889] (-) TimerEvent: {}
+[14.957192] (ai_robot_msgs) StdoutLine: {'line': b'[ 91%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/ai_robot_msgs/libai_robot_msgs__rosidl_generator_py.so\x1b[0m\n'}
+[15.010934] (ai_robot_msgs) StdoutLine: {'line': b'[ 91%] Built target ai_robot_msgs__rosidl_generator_py\n'}
+[15.017037] (-) TimerEvent: {}
+[15.034995] (ai_robot_msgs) StdoutLine: {'line': b'[ 92%] \x1b[32mBuilding C object CMakeFiles/ai_robot_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/ai_robot_msgs/_ai_robot_msgs_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[15.038910] (ai_robot_msgs) StdoutLine: {'line': b'[ 95%] \x1b[32mBuilding C object CMakeFiles/ai_robot_msgs__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/ai_robot_msgs/_ai_robot_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[15.039241] (ai_robot_msgs) StdoutLine: {'line': b'[ 95%] \x1b[32mBuilding C object CMakeFiles/ai_robot_msgs__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/ai_robot_msgs/_ai_robot_msgs_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[15.117366] (-) TimerEvent: {}
+[15.210957] (ai_robot_msgs) StdoutLine: {'line': b'[ 97%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/ai_robot_msgs/ai_robot_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[15.217511] (-) TimerEvent: {}
+[15.256276] (ai_robot_msgs) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/ai_robot_msgs/ai_robot_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[15.256578] (ai_robot_msgs) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/ai_robot_msgs/ai_robot_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[15.270449] (ai_robot_msgs) StdoutLine: {'line': b'[100%] Built target ai_robot_msgs__rosidl_typesupport_c__pyext\n'}
+[15.308400] (ai_robot_msgs) StdoutLine: {'line': b'[100%] Built target ai_robot_msgs__rosidl_typesupport_introspection_c__pyext\n'}
+[15.308671] (ai_robot_msgs) StdoutLine: {'line': b'[100%] Built target ai_robot_msgs__rosidl_typesupport_fastrtps_c__pyext\n'}
+[15.317702] (-) TimerEvent: {}
+[15.323558] (ai_robot_msgs) CommandEnded: {'returncode': 0}
+[15.325475] (ai_robot_msgs) JobProgress: {'identifier': 'ai_robot_msgs', 'progress': 'install'}
+[15.347658] (ai_robot_msgs) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/sex/Synapse/ai_robot_ws/build/ai_robot_msgs'], 'cwd': '/home/sex/Synapse/ai_robot_ws/build/ai_robot_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IN:'), ('USER', 'sex'), ('LC_TIME', 'ru_RU.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/sex'), ('OLDPWD', '/home/sex/Synapse'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'ru_RU.UTF-8'), ('SYSTEMD_EXEC_PID', '16461'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'sex'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'sex'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/sex/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/ubuntu2204:@/tmp/.ICE-unix/1575,unix/ubuntu2204:/tmp/.ICE-unix/1575'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'ru_RU.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/9224dd01_be7d_4035_aacb_34da68ca37d0'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'ru_RU.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.231'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ru_RU.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('GOOGLE_CLOUD_PROJECT', 'synpase'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ru_RU.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'ru_RU.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/sex/Synapse/ai_robot_ws/build/ai_robot_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ru_RU.UTF-8'), ('LC_PAPER', 'ru_RU.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800')]), 'shell': False}
+[15.377297] (ai_robot_msgs) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[15.378471] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ament_index/resource_index/rosidl_interfaces/ai_robot_msgs\n'}
+[15.379226] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs\n'}
+[15.379707] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg\n'}
+[15.380677] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/rosidl_generator_c__visibility_control.h\n'}
+[15.381008] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/person.h\n'}
+[15.381342] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail\n'}
+[15.381643] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person__type_support.h\n'}
+[15.383532] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person__functions.c\n'}
+[15.384877] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person__struct.h\n'}
+[15.385023] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person_array__functions.h\n'}
+[15.385175] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person_array__struct.h\n'}
+[15.385338] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person__functions.h\n'}
+[15.385720] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person_array__type_support.h\n'}
+[15.386803] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person_array__functions.c\n'}
+[15.387396] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/person_array.h\n'}
+[15.388522] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv\n'}
+[15.389772] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/store_conversation.h\n'}
+[15.390632] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/get_conversation.h\n'}
+[15.393970] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/lookup_person.h\n'}
+[15.395047] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail\n'}
+[15.395318] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/lookup_person__struct.h\n'}
+[15.395387] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/lookup_person__functions.c\n'}
+[15.395443] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/lookup_person__type_support.h\n'}
+[15.395498] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/register_person__type_support.h\n'}
+[15.395558] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/get_conversation__functions.c\n'}
+[15.395705] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/register_person__functions.h\n'}
+[15.395781] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/get_conversation__functions.h\n'}
+[15.395839] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/lookup_person__functions.h\n'}
+[15.395888] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/get_conversation__struct.h\n'}
+[15.395938] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/store_conversation__struct.h\n'}
+[15.395990] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/register_person__struct.h\n'}
+[15.396043] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/store_conversation__functions.h\n'}
+[15.396120] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/store_conversation__type_support.h\n'}
+[15.396200] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/store_conversation__functions.c\n'}
+[15.396342] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/register_person__functions.c\n'}
+[15.396400] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/get_conversation__type_support.h\n'}
+[15.396475] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/register_person.h\n'}
+[15.396561] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/environment/library_path.sh\n'}
+[15.396615] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/environment/library_path.dsv\n'}
+[15.396665] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/lib/libai_robot_msgs__rosidl_generator_c.so\n'}
+[15.396731] (ai_robot_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/lib/libai_robot_msgs__rosidl_generator_c.so" to ""\n'}
+[15.396793] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs\n'}
+[15.396850] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg\n'}
+[15.396903] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[15.396957] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail\n'}
+[15.397012] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person_array__rosidl_typesupport_fastrtps_c.h\n'}
+[15.397107] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person__rosidl_typesupport_fastrtps_c.h\n'}
+[15.397537] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv\n'}
+[15.397815] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail\n'}
+[15.397875] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/lookup_person__rosidl_typesupport_fastrtps_c.h\n'}
+[15.397934] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/store_conversation__rosidl_typesupport_fastrtps_c.h\n'}
+[15.397996] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/register_person__rosidl_typesupport_fastrtps_c.h\n'}
+[15.398082] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/get_conversation__rosidl_typesupport_fastrtps_c.h\n'}
+[15.398156] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/lib/libai_robot_msgs__rosidl_typesupport_fastrtps_c.so\n'}
+[15.398323] (ai_robot_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/lib/libai_robot_msgs__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[15.398460] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs\n'}
+[15.398521] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg\n'}
+[15.398569] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail\n'}
+[15.398616] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person_array__rosidl_typesupport_introspection_c.h\n'}
+[15.399035] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person__type_support.c\n'}
+[15.399538] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person__rosidl_typesupport_introspection_c.h\n'}
+[15.399647] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person_array__type_support.c\n'}
+[15.399701] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[15.399755] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv\n'}
+[15.399805] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail\n'}
+[15.400243] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/store_conversation__rosidl_typesupport_introspection_c.h\n'}
+[15.400326] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/register_person__rosidl_typesupport_introspection_c.h\n'}
+[15.400383] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/store_conversation__type_support.c\n'}
+[15.400432] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/register_person__type_support.c\n'}
+[15.400485] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/get_conversation__rosidl_typesupport_introspection_c.h\n'}
+[15.400531] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/get_conversation__type_support.c\n'}
+[15.400579] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/lookup_person__type_support.c\n'}
+[15.401346] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/lookup_person__rosidl_typesupport_introspection_c.h\n'}
+[15.401561] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/lib/libai_robot_msgs__rosidl_typesupport_introspection_c.so\n'}
+[15.401848] (ai_robot_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/lib/libai_robot_msgs__rosidl_typesupport_introspection_c.so" to ""\n'}
+[15.402165] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/lib/libai_robot_msgs__rosidl_typesupport_c.so\n'}
+[15.402412] (ai_robot_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/lib/libai_robot_msgs__rosidl_typesupport_c.so" to ""\n'}
+[15.402604] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs\n'}
+[15.402813] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg\n'}
+[15.402993] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/person.hpp\n'}
+[15.403105] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/person_array.hpp\n'}
+[15.403329] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail\n'}
+[15.403505] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person_array__builder.hpp\n'}
+[15.403703] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person__builder.hpp\n'}
+[15.403867] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person__type_support.hpp\n'}
+[15.403979] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person_array__type_support.hpp\n'}
+[15.404172] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person__struct.hpp\n'}
+[15.404399] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person_array__struct.hpp\n'}
+[15.404511] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person__traits.hpp\n'}
+[15.404680] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person_array__traits.hpp\n'}
+[15.404853] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[15.404961] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv\n'}
+[15.405144] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/store_conversation.hpp\n'}
+[15.405264] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/register_person.hpp\n'}
+[15.405478] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail\n'}
+[15.405665] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/get_conversation__type_support.hpp\n'}
+[15.405765] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/store_conversation__builder.hpp\n'}
+[15.405941] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/get_conversation__traits.hpp\n'}
+[15.406140] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/get_conversation__struct.hpp\n'}
+[15.406314] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/register_person__type_support.hpp\n'}
+[15.406744] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/lookup_person__builder.hpp\n'}
+[15.406936] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/lookup_person__traits.hpp\n'}
+[15.407054] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/store_conversation__type_support.hpp\n'}
+[15.407266] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/store_conversation__struct.hpp\n'}
+[15.407457] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/store_conversation__traits.hpp\n'}
+[15.407669] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/register_person__struct.hpp\n'}
+[15.407865] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/get_conversation__builder.hpp\n'}
+[15.408330] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/lookup_person__struct.hpp\n'}
+[15.408519] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/lookup_person__type_support.hpp\n'}
+[15.408671] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/register_person__traits.hpp\n'}
+[15.408820] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/register_person__builder.hpp\n'}
+[15.408992] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/get_conversation.hpp\n'}
+[15.409136] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/lookup_person.hpp\n'}
+[15.409371] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs\n'}
+[15.409530] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg\n'}
+[15.409662] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail\n'}
+[15.410128] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/dds_fastrtps\n'}
+[15.410292] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person_array__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[15.410404] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[15.410484] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[15.410592] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv\n'}
+[15.410690] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail\n'}
+[15.410785] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/get_conversation__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[15.411003] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/dds_fastrtps\n'}
+[15.411206] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/store_conversation__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[15.411340] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/lookup_person__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[15.411423] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/register_person__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[15.411495] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/lib/libai_robot_msgs__rosidl_typesupport_fastrtps_cpp.so\n'}
+[15.412333] (ai_robot_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/lib/libai_robot_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[15.412547] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs\n'}
+[15.412697] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg\n'}
+[15.412771] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail\n'}
+[15.412867] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person_array__rosidl_typesupport_introspection_cpp.hpp\n'}
+[15.413045] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person_array__type_support.cpp\n'}
+[15.413156] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person__rosidl_typesupport_introspection_cpp.hpp\n'}
+[15.413291] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/msg/detail/person__type_support.cpp\n'}
+[15.413490] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv\n'}
+[15.413582] (ai_robot_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail\n'}
+[15.413689] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/register_person__type_support.cpp\n'}
+[15.413839] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/lookup_person__rosidl_typesupport_introspection_cpp.hpp\n'}
+[15.413932] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/get_conversation__rosidl_typesupport_introspection_cpp.hpp\n'}
+[15.414103] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/register_person__rosidl_typesupport_introspection_cpp.hpp\n'}
+[15.414205] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/store_conversation__type_support.cpp\n'}
+[15.414333] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/lookup_person__type_support.cpp\n'}
+[15.414451] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/store_conversation__rosidl_typesupport_introspection_cpp.hpp\n'}
+[15.414601] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/include/ai_robot_msgs/ai_robot_msgs/srv/detail/get_conversation__type_support.cpp\n'}
+[15.414874] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/lib/libai_robot_msgs__rosidl_typesupport_introspection_cpp.so\n'}
+[15.415756] (ai_robot_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/lib/libai_robot_msgs__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[15.415916] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/lib/libai_robot_msgs__rosidl_typesupport_cpp.so\n'}
+[15.416257] (ai_robot_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/lib/libai_robot_msgs__rosidl_typesupport_cpp.so" to ""\n'}
+[15.416421] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/environment/pythonpath.sh\n'}
+[15.416537] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/environment/pythonpath.dsv\n'}
+[15.416750] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs-0.0.0-py3.10.egg-info\n'}
+[15.417000] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs-0.0.0-py3.10.egg-info/PKG-INFO\n'}
+[15.417232] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs-0.0.0-py3.10.egg-info/dependency_links.txt\n'}
+[15.417381] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs-0.0.0-py3.10.egg-info/top_level.txt\n'}
+[15.417516] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs-0.0.0-py3.10.egg-info/SOURCES.txt\n'}
+[15.417730] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs\n'}
+[15.417830] (-) TimerEvent: {}
+[15.418055] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/ai_robot_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[15.418175] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/libai_robot_msgs__rosidl_generator_py.so\n'}
+[15.418332] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/_ai_robot_msgs_s.ep.rosidl_typesupport_c.c\n'}
+[15.418514] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/msg\n'}
+[15.418639] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/msg/_person_s.c\n'}
+[15.418780] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/msg/_person_array.py\n'}
+[15.418933] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/msg/__init__.py\n'}
+[15.419075] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/msg/_person.py\n'}
+[15.419263] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/msg/_person_array_s.c\n'}
+[15.419428] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/ai_robot_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[15.419689] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/srv\n'}
+[15.419816] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/srv/_store_conversation.py\n'}
+[15.419943] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/srv/_lookup_person_s.c\n'}
+[15.420128] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/srv/_register_person_s.c\n'}
+[15.420303] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/srv/__init__.py\n'}
+[15.420475] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/srv/_lookup_person.py\n'}
+[15.420628] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/srv/_store_conversation_s.c\n'}
+[15.420755] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/srv/_register_person.py\n'}
+[15.420905] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/srv/_get_conversation_s.c\n'}
+[15.421064] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/srv/_get_conversation.py\n'}
+[15.421224] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/__init__.py\n'}
+[15.421352] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/_ai_robot_msgs_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[15.421557] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/_ai_robot_msgs_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[15.421749] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/ai_robot_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[15.483706] (ai_robot_msgs) StdoutLine: {'line': b"Listing '/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs'...\n"}
+[15.484004] (ai_robot_msgs) StdoutLine: {'line': b"Compiling '/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/__init__.py'...\n"}
+[15.484162] (ai_robot_msgs) StdoutLine: {'line': b"Listing '/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/msg'...\n"}
+[15.484315] (ai_robot_msgs) StdoutLine: {'line': b"Compiling '/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/msg/__init__.py'...\n"}
+[15.484429] (ai_robot_msgs) StdoutLine: {'line': b"Compiling '/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/msg/_person.py'...\n"}
+[15.484540] (ai_robot_msgs) StdoutLine: {'line': b"Compiling '/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/msg/_person_array.py'...\n"}
+[15.484634] (ai_robot_msgs) StdoutLine: {'line': b"Listing '/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/srv'...\n"}
+[15.484731] (ai_robot_msgs) StdoutLine: {'line': b"Compiling '/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/srv/__init__.py'...\n"}
+[15.484824] (ai_robot_msgs) StdoutLine: {'line': b"Compiling '/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/srv/_get_conversation.py'...\n"}
+[15.484926] (ai_robot_msgs) StdoutLine: {'line': b"Compiling '/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/srv/_lookup_person.py'...\n"}
+[15.485054] (ai_robot_msgs) StdoutLine: {'line': b"Compiling '/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/srv/_register_person.py'...\n"}
+[15.485222] (ai_robot_msgs) StdoutLine: {'line': b"Compiling '/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/srv/_store_conversation.py'...\n"}
+[15.489908] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/ai_robot_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[15.490269] (ai_robot_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/ai_robot_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""\n'}
+[15.490520] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/ai_robot_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[15.490904] (ai_robot_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/ai_robot_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""\n'}
+[15.491125] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/ai_robot_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[15.491507] (ai_robot_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages/ai_robot_msgs/ai_robot_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""\n'}
+[15.491654] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/lib/libai_robot_msgs__rosidl_generator_py.so\n'}
+[15.492146] (ai_robot_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/lib/libai_robot_msgs__rosidl_generator_py.so" to ""\n'}
+[15.492396] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/msg/Person.idl\n'}
+[15.492571] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/msg/PersonArray.idl\n'}
+[15.492734] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/srv/GetConversation.idl\n'}
+[15.492885] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/srv/LookupPerson.idl\n'}
+[15.493051] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/srv/RegisterPerson.idl\n'}
+[15.493253] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/srv/StoreConversation.idl\n'}
+[15.493446] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/msg/Person.msg\n'}
+[15.493605] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/msg/PersonArray.msg\n'}
+[15.493782] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/srv/GetConversation.srv\n'}
+[15.493946] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/srv/GetConversation_Request.msg\n'}
+[15.494127] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/srv/GetConversation_Response.msg\n'}
+[15.494351] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/srv/LookupPerson.srv\n'}
+[15.494529] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/srv/LookupPerson_Request.msg\n'}
+[15.494716] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/srv/LookupPerson_Response.msg\n'}
+[15.494899] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/srv/RegisterPerson.srv\n'}
+[15.495158] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/srv/RegisterPerson_Request.msg\n'}
+[15.495383] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/srv/RegisterPerson_Response.msg\n'}
+[15.495532] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/srv/StoreConversation.srv\n'}
+[15.495759] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/srv/StoreConversation_Request.msg\n'}
+[15.495956] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/srv/StoreConversation_Response.msg\n'}
+[15.496292] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ament_index/resource_index/package_run_dependencies/ai_robot_msgs\n'}
+[15.497699] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ament_index/resource_index/parent_prefix_path/ai_robot_msgs\n'}
+[15.498020] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/environment/ament_prefix_path.sh\n'}
+[15.498295] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/environment/ament_prefix_path.dsv\n'}
+[15.498531] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/environment/path.sh\n'}
+[15.498610] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/environment/path.dsv\n'}
+[15.498705] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/local_setup.bash\n'}
+[15.498803] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/local_setup.sh\n'}
+[15.498962] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/local_setup.zsh\n'}
+[15.499059] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/local_setup.dsv\n'}
+[15.499208] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/package.dsv\n'}
+[15.499315] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ament_index/resource_index/packages/ai_robot_msgs\n'}
+[15.499446] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/export_ai_robot_msgs__rosidl_generator_cExport.cmake\n'}
+[15.499524] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/export_ai_robot_msgs__rosidl_generator_cExport-noconfig.cmake\n'}
+[15.499666] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/export_ai_robot_msgs__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[15.499809] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/export_ai_robot_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[15.499937] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/ai_robot_msgs__rosidl_typesupport_introspection_cExport.cmake\n'}
+[15.500107] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/ai_robot_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[15.500288] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/ai_robot_msgs__rosidl_typesupport_cExport.cmake\n'}
+[15.500460] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/ai_robot_msgs__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[15.500637] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/export_ai_robot_msgs__rosidl_generator_cppExport.cmake\n'}
+[15.500816] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/export_ai_robot_msgs__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[15.500995] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/export_ai_robot_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[15.501214] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/ai_robot_msgs__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[15.501397] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/ai_robot_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[15.501556] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/ai_robot_msgs__rosidl_typesupport_cppExport.cmake\n'}
+[15.501758] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/ai_robot_msgs__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[15.501929] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/export_ai_robot_msgs__rosidl_generator_pyExport.cmake\n'}
+[15.502112] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/export_ai_robot_msgs__rosidl_generator_pyExport-noconfig.cmake\n'}
+[15.502279] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/rosidl_cmake-extras.cmake\n'}
+[15.502436] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[15.502611] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[15.502768] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[15.502925] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[15.503083] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[15.503265] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[15.503425] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/ai_robot_msgsConfig.cmake\n'}
+[15.503567] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/cmake/ai_robot_msgsConfig-version.cmake\n'}
+[15.503753] (ai_robot_msgs) StdoutLine: {'line': b'-- Installing: /home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share/ai_robot_msgs/package.xml\n'}
+[15.506784] (ai_robot_msgs) CommandEnded: {'returncode': 0}
+[15.517994] (-) TimerEvent: {}
+[15.528752] (ai_robot_msgs) JobEnded: {'identifier': 'ai_robot_msgs', 'rc': 0}
+[15.529604] (ai_robot_core) JobStarted: {'identifier': 'ai_robot_core'}
+[15.618226] (-) TimerEvent: {}
+[15.718672] (-) TimerEvent: {}
+[15.819140] (-) TimerEvent: {}
+[15.919629] (-) TimerEvent: {}
+[16.020006] (-) TimerEvent: {}
+[16.120440] (-) TimerEvent: {}
+[16.220894] (-) TimerEvent: {}
+[16.232261] (ai_robot_core) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/ai_robot_core', 'build', '--build-base', '/home/sex/Synapse/ai_robot_ws/build/ai_robot_core/build', 'install', '--record', '/home/sex/Synapse/ai_robot_ws/build/ai_robot_core/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/sex/Synapse/ai_robot_ws/src/ai_robot_core', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'LANGUAGE': 'en_IN:', 'USER': 'sex', 'LC_TIME': 'ru_RU.UTF-8', 'XDG_SESSION_TYPE': 'x11', 'ROS_PACKAGE_PATH': '/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/share', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/home/sex', 'OLDPWD': '/home/sex/Synapse', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'ru_RU.UTF-8', 'SYSTEMD_EXEC_PID': '16461', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'ROS_DISTRO': 'humble', 'GTK_IM_MODULE': 'ibus', 'LOGNAME': 'sex', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'PKG_CONFIG_PATH': '/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/lib/x86_64-linux-gnu/pkgconfig:/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/lib/pkgconfig', 'USERNAME': 'sex', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'PATH': '/opt/ros/humble/bin:/home/sex/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/ubuntu2204:@/tmp/.ICE-unix/1575,unix/ubuntu2204:/tmp/.ICE-unix/1575', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'ru_RU.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/9224dd01_be7d_4035_aacb_34da68ca37d0', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'ru_RU.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'GNOME_TERMINAL_SERVICE': ':1.231', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'SHELL': '/bin/bash', 'LC_NAME': 'ru_RU.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'GOOGLE_CLOUD_PROJECT': 'synpase', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'ru_RU.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'ru_RU.UTF-8', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/sex/Synapse/ai_robot_ws/build/ai_robot_core', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/sex/Synapse/ai_robot_ws/build/ai_robot_core/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/python3.10/site-packages:/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'LC_NUMERIC': 'ru_RU.UTF-8', 'LC_PAPER': 'ru_RU.UTF-8', 'COLCON': '1', 'VTE_VERSION': '6800', 'CMAKE_PREFIX_PATH': '/home/sex/Synapse/ai_robot_ws/install/ai_robot_msgs'}, 'shell': False}
+[16.321084] (-) TimerEvent: {}
+[16.421550] (-) TimerEvent: {}
+[16.491022] (ai_robot_core) StdoutLine: {'line': b'running egg_info\n'}
+[16.492033] (ai_robot_core) StdoutLine: {'line': b'creating ../../build/ai_robot_core/ai_robot_core.egg-info\n'}
+[16.492454] (ai_robot_core) StdoutLine: {'line': b'writing ../../build/ai_robot_core/ai_robot_core.egg-info/PKG-INFO\n'}
+[16.492841] (ai_robot_core) StdoutLine: {'line': b'writing dependency_links to ../../build/ai_robot_core/ai_robot_core.egg-info/dependency_links.txt\n'}
+[16.493104] (ai_robot_core) StdoutLine: {'line': b'writing entry points to ../../build/ai_robot_core/ai_robot_core.egg-info/entry_points.txt\n'}
+[16.493301] (ai_robot_core) StdoutLine: {'line': b'writing requirements to ../../build/ai_robot_core/ai_robot_core.egg-info/requires.txt\n'}
+[16.493497] (ai_robot_core) StdoutLine: {'line': b'writing top-level names to ../../build/ai_robot_core/ai_robot_core.egg-info/top_level.txt\n'}
+[16.493761] (ai_robot_core) StdoutLine: {'line': b"writing manifest file '../../build/ai_robot_core/ai_robot_core.egg-info/SOURCES.txt'\n"}
+[16.496016] (ai_robot_core) StdoutLine: {'line': b"reading manifest file '../../build/ai_robot_core/ai_robot_core.egg-info/SOURCES.txt'\n"}
+[16.497016] (ai_robot_core) StdoutLine: {'line': b"writing manifest file '../../build/ai_robot_core/ai_robot_core.egg-info/SOURCES.txt'\n"}
+[16.497460] (ai_robot_core) StdoutLine: {'line': b'running build\n'}
+[16.497721] (ai_robot_core) StdoutLine: {'line': b'running build_py\n'}
+[16.497868] (ai_robot_core) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/build/ai_robot_core/build\n'}
+[16.498000] (ai_robot_core) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/build/ai_robot_core/build/lib\n'}
+[16.498144] (ai_robot_core) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/build/ai_robot_core/build/lib/ui\n'}
+[16.498337] (ai_robot_core) StdoutLine: {'line': b'copying ui/robot_ui_plugin.py -> /home/sex/Synapse/ai_robot_ws/build/ai_robot_core/build/lib/ui\n'}
+[16.498494] (ai_robot_core) StdoutLine: {'line': b'copying ui/__init__.py -> /home/sex/Synapse/ai_robot_ws/build/ai_robot_core/build/lib/ui\n'}
+[16.498610] (ai_robot_core) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/build/ai_robot_core/build/lib/nodes\n'}
+[16.498781] (ai_robot_core) StdoutLine: {'line': b'copying nodes/person_follower_node.py -> /home/sex/Synapse/ai_robot_ws/build/ai_robot_core/build/lib/nodes\n'}
+[16.498885] (ai_robot_core) StdoutLine: {'line': b'copying nodes/face_recognition_node.py -> /home/sex/Synapse/ai_robot_ws/build/ai_robot_core/build/lib/nodes\n'}
+[16.499066] (ai_robot_core) StdoutLine: {'line': b'copying nodes/memory_manager_node.py -> /home/sex/Synapse/ai_robot_ws/build/ai_robot_core/build/lib/nodes\n'}
+[16.499163] (ai_robot_core) StdoutLine: {'line': b'copying nodes/interaction_manager_node.py -> /home/sex/Synapse/ai_robot_ws/build/ai_robot_core/build/lib/nodes\n'}
+[16.499308] (ai_robot_core) StdoutLine: {'line': b'copying nodes/emotion_engine_node.py -> /home/sex/Synapse/ai_robot_ws/build/ai_robot_core/build/lib/nodes\n'}
+[16.499392] (ai_robot_core) StdoutLine: {'line': b'copying nodes/__init__.py -> /home/sex/Synapse/ai_robot_ws/build/ai_robot_core/build/lib/nodes\n'}
+[16.499725] (ai_robot_core) StdoutLine: {'line': b'running install\n'}
+[16.500220] (ai_robot_core) StdoutLine: {'line': b'running install_lib\n'}
+[16.501431] (ai_robot_core) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/python3.10/site-packages/ui\n'}
+[16.501749] (ai_robot_core) StdoutLine: {'line': b'copying /home/sex/Synapse/ai_robot_ws/build/ai_robot_core/build/lib/ui/robot_ui_plugin.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/python3.10/site-packages/ui\n'}
+[16.501922] (ai_robot_core) StdoutLine: {'line': b'copying /home/sex/Synapse/ai_robot_ws/build/ai_robot_core/build/lib/ui/__init__.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/python3.10/site-packages/ui\n'}
+[16.502062] (ai_robot_core) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/python3.10/site-packages/nodes\n'}
+[16.502180] (ai_robot_core) StdoutLine: {'line': b'copying /home/sex/Synapse/ai_robot_ws/build/ai_robot_core/build/lib/nodes/person_follower_node.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/python3.10/site-packages/nodes\n'}
+[16.502377] (ai_robot_core) StdoutLine: {'line': b'copying /home/sex/Synapse/ai_robot_ws/build/ai_robot_core/build/lib/nodes/face_recognition_node.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/python3.10/site-packages/nodes\n'}
+[16.502703] (ai_robot_core) StdoutLine: {'line': b'copying /home/sex/Synapse/ai_robot_ws/build/ai_robot_core/build/lib/nodes/memory_manager_node.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/python3.10/site-packages/nodes\n'}
+[16.502853] (ai_robot_core) StdoutLine: {'line': b'copying /home/sex/Synapse/ai_robot_ws/build/ai_robot_core/build/lib/nodes/interaction_manager_node.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/python3.10/site-packages/nodes\n'}
+[16.502958] (ai_robot_core) StdoutLine: {'line': b'copying /home/sex/Synapse/ai_robot_ws/build/ai_robot_core/build/lib/nodes/emotion_engine_node.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/python3.10/site-packages/nodes\n'}
+[16.503221] (ai_robot_core) StdoutLine: {'line': b'copying /home/sex/Synapse/ai_robot_ws/build/ai_robot_core/build/lib/nodes/__init__.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/python3.10/site-packages/nodes\n'}
+[16.503714] (ai_robot_core) StdoutLine: {'line': b'byte-compiling /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/python3.10/site-packages/ui/robot_ui_plugin.py to robot_ui_plugin.cpython-310.pyc\n'}
+[16.504775] (ai_robot_core) StdoutLine: {'line': b'byte-compiling /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/python3.10/site-packages/ui/__init__.py to __init__.cpython-310.pyc\n'}
+[16.504968] (ai_robot_core) StdoutLine: {'line': b'byte-compiling /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/python3.10/site-packages/nodes/person_follower_node.py to person_follower_node.cpython-310.pyc\n'}
+[16.505998] (ai_robot_core) StdoutLine: {'line': b'byte-compiling /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/python3.10/site-packages/nodes/face_recognition_node.py to face_recognition_node.cpython-310.pyc\n'}
+[16.506984] (ai_robot_core) StdoutLine: {'line': b'byte-compiling /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/python3.10/site-packages/nodes/memory_manager_node.py to memory_manager_node.cpython-310.pyc\n'}
+[16.508033] (ai_robot_core) StdoutLine: {'line': b'byte-compiling /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/python3.10/site-packages/nodes/interaction_manager_node.py to interaction_manager_node.cpython-310.pyc\n'}
+[16.509151] (ai_robot_core) StdoutLine: {'line': b'byte-compiling /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/python3.10/site-packages/nodes/emotion_engine_node.py to emotion_engine_node.cpython-310.pyc\n'}
+[16.509764] (ai_robot_core) StdoutLine: {'line': b'byte-compiling /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/python3.10/site-packages/nodes/__init__.py to __init__.cpython-310.pyc\n'}
+[16.510154] (ai_robot_core) StdoutLine: {'line': b'running install_data\n'}
+[16.510397] (ai_robot_core) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ament_index\n'}
+[16.510515] (ai_robot_core) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ament_index/resource_index\n'}
+[16.510611] (ai_robot_core) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ament_index/resource_index/packages\n'}
+[16.510785] (ai_robot_core) StdoutLine: {'line': b'copying resource/ai_robot_core -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ament_index/resource_index/packages\n'}
+[16.510912] (ai_robot_core) StdoutLine: {'line': b'copying package.xml -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core\n'}
+[16.511027] (ai_robot_core) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/launch\n'}
+[16.511363] (ai_robot_core) StdoutLine: {'line': b'copying launch/core_sensors.launch.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/launch\n'}
+[16.511491] (ai_robot_core) StdoutLine: {'line': b'copying launch/gazebo.launch.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/launch\n'}
+[16.511595] (ai_robot_core) StdoutLine: {'line': b'copying launch/full_ai_app.launch.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/launch\n'}
+[16.512012] (ai_robot_core) StdoutLine: {'line': b'copying launch/teleop.launch.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/launch\n'}
+[16.512243] (ai_robot_core) StdoutLine: {'line': b'copying launch/robot_state_publisher.launch.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/launch\n'}
+[16.512388] (ai_robot_core) StdoutLine: {'line': b'copying launch/mapping.launch.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/launch\n'}
+[16.512486] (ai_robot_core) StdoutLine: {'line': b'copying launch/navigation.launch.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/launch\n'}
+[16.512586] (ai_robot_core) StdoutLine: {'line': b'copying launch/nav2_bringup.launch.py -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/launch\n'}
+[16.512686] (ai_robot_core) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/urdf\n'}
+[16.512883] (ai_robot_core) StdoutLine: {'line': b'copying urdf/gazebo_control.xacro -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/urdf\n'}
+[16.512996] (ai_robot_core) StdoutLine: {'line': b'copying urdf/ai_robot.urdf.xacro -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/urdf\n'}
+[16.513144] (ai_robot_core) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/worlds\n'}
+[16.513279] (ai_robot_core) StdoutLine: {'line': b'copying worlds/ai_robot_world.world -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/worlds\n'}
+[16.513434] (ai_robot_core) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/config\n'}
+[16.513538] (ai_robot_core) StdoutLine: {'line': b'copying config/nav2_params.yaml -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/config\n'}
+[16.513644] (ai_robot_core) StdoutLine: {'line': b'copying config/slam_async.yaml -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/config\n'}
+[16.513751] (ai_robot_core) StdoutLine: {'line': b'copying config/depth_to_scan.yaml -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/config\n'}
+[16.513929] (ai_robot_core) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/rviz\n'}
+[16.514050] (ai_robot_core) StdoutLine: {'line': b'copying rviz/ai_robot.rviz -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/rviz\n'}
+[16.514170] (ai_robot_core) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/maps\n'}
+[16.514346] (ai_robot_core) StdoutLine: {'line': b'copying maps/my_map.pgm -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/maps\n'}
+[16.514455] (ai_robot_core) StdoutLine: {'line': b'copying maps/my_map.yaml -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/maps\n'}
+[16.514553] (ai_robot_core) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/ui\n'}
+[16.514700] (ai_robot_core) StdoutLine: {'line': b'copying ui/robot_ui.ui -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/ui\n'}
+[16.514791] (ai_robot_core) StdoutLine: {'line': b'copying plugin.xml -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core\n'}
+[16.514870] (ai_robot_core) StdoutLine: {'line': b'creating /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/data\n'}
+[16.514976] (ai_robot_core) StdoutLine: {'line': b'copying data/haarcascade_frontalface_default.xml -> /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/share/ai_robot_core/data\n'}
+[16.517303] (ai_robot_core) StdoutLine: {'line': b'running install_egg_info\n'}
+[16.520527] (ai_robot_core) StdoutLine: {'line': b'Copying ../../build/ai_robot_core/ai_robot_core.egg-info to /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/python3.10/site-packages/ai_robot_core-0.0.0-py3.10.egg-info\n'}
+[16.521434] (ai_robot_core) StdoutLine: {'line': b'running install_scripts\n'}
+[16.521626] (-) TimerEvent: {}
+[16.542612] (ai_robot_core) StdoutLine: {'line': b'Installing emotion_engine_node script to /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/ai_robot_core\n'}
+[16.542950] (ai_robot_core) StdoutLine: {'line': b'Installing face_recognition_node script to /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/ai_robot_core\n'}
+[16.543223] (ai_robot_core) StdoutLine: {'line': b'Installing interaction_manager_node script to /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/ai_robot_core\n'}
+[16.543404] (ai_robot_core) StdoutLine: {'line': b'Installing memory_manager_node script to /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/ai_robot_core\n'}
+[16.543516] (ai_robot_core) StdoutLine: {'line': b'Installing person_follower_node script to /home/sex/Synapse/ai_robot_ws/install/ai_robot_core/lib/ai_robot_core\n'}
+[16.544094] (ai_robot_core) StdoutLine: {'line': b"writing list of installed files to '/home/sex/Synapse/ai_robot_ws/build/ai_robot_core/install.log'\n"}
+[16.578994] (ai_robot_core) CommandEnded: {'returncode': 0}
+[16.589748] (ai_robot_core) JobEnded: {'identifier': 'ai_robot_core', 'rc': 0}
+[16.590907] (-) EventReactorShutdown: {}

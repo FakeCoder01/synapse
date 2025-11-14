@@ -92,18 +92,102 @@ class IRSensorNode(Node):
             # Generic: assume linear relationship
             return voltage * 0.2  # Example conversion
 
-    def _publish_sensors(self):
-        """Publish IR sensor readings"""
-        if self.adc is None:
-            return
-        
-        try:
-            # Read left sensor
-            left_voltage = self.left_channel_obj.voltage
-            left_distance = self._voltage_to_distance(left_voltage)
+        def _publish_sensors(self):
+
+            """Publish IR sensor readings"""
+
+            if self.adc is None:
+
+                return
+
             
-            left_msg = Range()
-            left_msg.header = Header()
-            left_msg.header.stamp = self.get_clock().now().to_msg()
-            left_msg.header.frame_id = 'ir_left_link'
-            left_
+
+            now = self.get_clock().now().to_msg()
+
+            
+
+            try:
+
+                # Read left sensor
+
+                left_voltage = self.left_channel_obj.voltage
+
+                left_distance = self._voltage_to_distance(left_voltage)
+
+                
+
+                left_msg = Range()
+
+                left_msg.header.stamp = now
+
+                left_msg.header.frame_id = 'ir_left_link' # Assumes a frame defined in URDF
+
+                left_msg.radiation_type = Range.INFRARED
+
+                left_msg.field_of_view = 0.1 # Radians, an estimate
+
+                left_msg.min_range = 0.10 # Meters
+
+                left_msg.max_range = 0.80 # Meters
+
+                left_msg.range = left_distance
+
+                self.left_pub.publish(left_msg)
+
+    
+
+                # Read right sensor
+
+                right_voltage = self.right_channel_obj.voltage
+
+                right_distance = self._voltage_to_distance(right_voltage)
+
+    
+
+                right_msg = Range()
+
+                right_msg.header.stamp = now
+
+                right_msg.header.frame_id = 'ir_right_link' # Assumes a frame defined in URDF
+
+                right_msg.radiation_type = Range.INFRARED
+
+                right_msg.field_of_view = 0.1
+
+                right_msg.min_range = 0.10
+
+                right_msg.max_range = 0.80
+
+                right_msg.range = right_distance
+
+                self.right_pub.publish(right_msg)
+
+                
+
+            except Exception as e:
+
+                self.get_logger().error(f'Failed to read from ADC: {e}')
+
+    
+
+    def main(args=None):
+
+        rclpy.init(args=args)
+
+        node = IRSensorNode()
+
+        rclpy.spin(node)
+
+        node.destroy_node()
+
+        rclpy.shutdown()
+
+    
+
+    
+
+    if __name__ == '__main__':
+
+        main()
+
+    
